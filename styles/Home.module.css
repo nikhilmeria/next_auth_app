@@ -34,7 +34,7 @@
 
 /* Header */
 .header{
-  background-image: url("../public/images/services.webp");
+  background-image: url("../public/images/services.webp");/*use '../', for path*/
   max-width:100%;
   height: 500px;
   background-position-x: right;
@@ -82,4 +82,46 @@
 .button1:hover {
    background-color: rgb(255, 214, 48);
    color: #FFFFFF;
+}
+
+
+/* Features */
+.features{
+    display: flex;
+    flex-direction: row;
+    flex-basis: auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid #CAD0D2;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.card__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+}
+.card__text {
+    position: absolute;
+    /* bottom: 0;  */
+    text-align: center;
+    color: #57727C;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 15px;
+    border: 1px solid #D7DBDD;
+    background-color: #EEF3F5;
+}
+.cardFixedWidth {
+  max-width: 250px;
+}
+.card__text a{
+    text-decoration: none;
 }

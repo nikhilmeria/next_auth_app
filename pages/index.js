@@ -55,32 +55,37 @@ export default function Home() {
      </div>
     </section>
 
-    {/* <section class="features">
-     <div class="card card--fixedWidth">
-      <div class="card__description">
-       <Image src="./images/service.png" alt="Service" />
+    <section className={styles.features}>
+     <div className={styles.card + " " + styles.cardFixedWidth}>
+      <div className={styles.card__description}>
+       <Image
+        src="/images/service.png"
+        alt="Service"
+        width={200}
+        height={175}
+       />
       </div>
-      <div class="card__text">
+      <div className={styles.card__text}>
        <a href="http://">
         <h3>Service</h3>
        </a>
       </div>
      </div>
-     <div class="card card--fixedWidth">
-      <div class="card__description">
-       <Image src="./images/job.jpg" alt="Job" />
+     <div className={styles.card + " " + styles.cardFixedWidth}>
+      <div className={styles.card__description}>
+       <Image src="/images/job.jpg" alt="Job" width={200} height={175} />
       </div>
-      <div class="card__text">
+      <div className={styles.card__text}>
        <a href="http://">
         <h3>Job</h3>
        </a>
       </div>
      </div>
-     <div class="card card--fixedWidth">
-      <div class="card__description">
-       <Image src="./images/staff.jpg" alt="Staff" />
+     <div className={styles.card + " " + styles.cardFixedWidth}>
+      <div className={styles.card__description}>
+       <Image src="/images/staff.jpg" alt="Staff" width={200} height={175} />
       </div>
-      <div class="card__text">
+      <div className={styles.card__text}>
        <a href="http://">
         <h3>Staff</h3>
        </a>
@@ -88,7 +93,7 @@ export default function Home() {
      </div>
     </section>
 
-    <section class="yt">
+    {/* <section class="yt">
      <div class="yt-vid-container">
       <div class="yt-vid">
        <iframe
