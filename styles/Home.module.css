@@ -192,6 +192,31 @@
 .footCard iframe{
     padding: 15px 15px;
 }
+/* Footer - Mobile */
+@media (max-width : 420px) {
+    .foot{
+        display: flex;
+        flex-direction: column;
+        flex-basis: auto;
+        max-width: 700px;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+    .foot-card h2{
+        position: relative;
+        bottom: 17.8rem;
+        right: 0.2rem;
+        text-align: center;
+        color: #57727C;
+        font-size: 1.2rem;
+        font-weight: 900;
+        padding: 5px 15px;
+        border: 1px solid #D7DBDD;
+        background-color: #EEF3F5;
+    } 
+}
+
+
 
 /* Copyright */
 .copyright {
@@ -207,7 +232,12 @@
   text-align: center;
   margin: 0;  /* to remove any extra whitespace below a div*/
 }
+/* Copyright - Mobile*/
+@media (max-width:420px) {}
 
+
+
+/* bottom div */
 .bottom{
     position: absolute;
     bottom: 0;
@@ -219,4 +249,10 @@
 .bottom p {
   margin: 0;
   padding: 0.5em 0.5em;
+}
+/* bottom div - Mobile*/
+@media (max-width:420px) {
+ .bottom{
+  display: none;
+ }
 }
