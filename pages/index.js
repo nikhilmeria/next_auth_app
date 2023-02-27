@@ -78,7 +78,6 @@ export default function Home() {
      <section className={styles.header}>
       <div className={styles.headerText}>
        <h1>What's Shoorvir ?</h1>
-       <br />
        <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum dolorem
         maxime natus ad odionesciunt, nostrum impedit unde consequatur quo est
