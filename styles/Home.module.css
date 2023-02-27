@@ -31,6 +31,53 @@
     border-radius: 0.3em;
     color: #57727C;
 }
+/* nav - Mobile*/
+@media (max-width: 420px) {
+    .bar{
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: black;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+    }
+    .navMenu{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: -100%;
+        gap: 0;
+        width: 100%;
+        background-color: rgb(255, 214, 48);
+        text-align: center;
+        transition: 0.7s;
+    }
+    .navLink{
+        margin: 16px 0;
+    }
+    .navLink{
+        transition: 0.7s ease;
+    }
+    .navMenu a{
+        font-size: 1.2rem;
+    }   
+    .navMenu.active{
+        top: 62px;
+    }
+    .hamburger{
+        display: block;
+        margin-right: 10px;
+    }
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+       transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
 
 /* Header */
 .header{
@@ -84,6 +131,33 @@
    background-color: rgb(255, 214, 48);
    color: #FFFFFF;
 }
+/* Header- Mobile */
+@media (max-width : 420px) {
+   .header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+   .button {
+    max-width: 30vw;
+    border-radius: 15px;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+   }
+   .button1 {
+    background-color: rgb(255, 214, 48);
+    color: black; 
+    border: 2px solid #4CAF50;
+    }
+}
 
 
 /* Features */
@@ -125,6 +199,22 @@
 }
 .card__text a{
     text-decoration: none;
+}
+/* Features- Mobile */
+@media (max-width : 420px) {
+   .features{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;
+   }
+   .card__text h3{
+    font-size: 1.2rem;
+   }
+   .card--fixedWidth:nth-child(3) {
+     max-width: 245px;
+    }
 }
 
 /* Youtube Section */
