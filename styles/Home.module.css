@@ -160,6 +160,10 @@
   .headerText h1{
     margin-right: auto;
   }
+  .headerText p{
+      font-size: 4.8vw; 
+      font-weight: bold;
+  }
    .button {
     max-width: 30vw;
     border-radius: 15px;
@@ -168,7 +172,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 12px;
+    font-size: 4vw;
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
@@ -183,14 +187,14 @@
 @media (min-width : 425px) and (max-width:1000px){
   .header{
     position: relative;
-    top: 50px;
+    top: 20px;
     bottom: 50px;
     background-image: url("../public/images/services.webp");/*use '../', for path*/
     max-width:100%;
     min-height: 500px;
     background-position-x: right;
     background-repeat: no-repeat;
-    background-size: 68%;
+    background-size: 70%;
   }
   .headerText {
       display: flex;
@@ -211,17 +215,18 @@
     padding: 4px;
   }
   .headerText p{
-      font-size: clamp(1.2rem, 5vw + 1rem, 1.2rem); 
+      font-size: 2.2vw; 
+      font-weight: bold;
   }
   .button {
-      max-width: 10vw;
+      max-width: 15vw;
       border-radius: 15px;
       color: white;
       padding: 8px 16px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 12px;
+      font-size: 2vw;
       margin: 4px 2px;
       transition-duration: 0.4s;
       cursor: pointer;
@@ -279,11 +284,6 @@
     text-decoration: none;
 }
 
-/* Header - Tablet View */
-@media (min-width : 425px) and (max-width:1000px){
-
-}
-
 /* Features- Mobile */
 @media (max-width : 420px) {
    .features{
@@ -291,7 +291,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 200px;
+    margin-top: 225px;
    }
    .card__text h3{
     font-size: 1.2rem;
@@ -300,6 +300,15 @@
      min-width: 275px;
     }
 }
+
+/* Features - Tablet View */
+@media (min-width : 425px) and (max-width:1000px){
+ .card__text {
+    font-size: 1.4vw;
+    font-weight: bolder;
+ }
+}
+
 
 /* Youtube Section */
 .yt{
@@ -322,11 +331,25 @@
     bottom: 0;
     text-align: center;
     color: #57727C;
-    font-size: 15px;
+    font-size: 1vw;
     font-weight: 700;
     padding: 5px 15px;
     border: 1px solid #D7DBDD;
     background-color: #EEF3F5;
+}
+
+/* youtube - mobile */
+@media (max-width: 420px) {
+  .ytTxt{
+    font-size: 3.5vw;
+  }
+}
+
+/* youtube - Tablet View */
+@media (min-width : 425px) and (max-width:1000px){
+  .ytTxt{
+    font-size: 1.8vw;
+  }
 }
 
  /* Footer */
