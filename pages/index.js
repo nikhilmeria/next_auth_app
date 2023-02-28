@@ -7,13 +7,18 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
  const [showDiv, setShowDiv] = useState(true);
  const [clsName, setClsName] = useState(false);
+ const [winObj, setWinObj] = useState(null); //1
 
  useEffect(() => {
+  setWinObj(window);
+
   function handleScroll() {
    if (window.scrollY === 0) {
     setShowDiv(true);
+    setWinObj(window);
    } else {
     setShowDiv(false);
+    setWinObj(null);
    }
   }
 
@@ -23,15 +28,6 @@ export default function Home() {
    window.removeEventListener("scroll", handleScroll);
   };
  }, []);
-
- //  // fn to handle toggle of classname for hamburger div
- //  function handleActiveClass() {
- //   console.log("Hamburger clicked in fn");
- //   setClsNameDiv(`${"hamburger"} ${"active"}`);
- //   setClsNameUL(`${"navMenu"} ${"active"}`);
- //   console.log(clsNameDiv);
- //   console.log(clsNameUL);
- //  }
 
  return (
   <>
@@ -46,8 +42,12 @@ export default function Home() {
      <Image src="/images/logo.png" alt="Vercel Logo" width={72} height={16} />
      <ul
       className={
-       clsName ? styles.navMenu + " " + styles.active : styles.navMenu
-      }
+       winObj != null
+        ? winObj.scrollY === 0 && clsName
+          ? styles.navMenu + " " + styles.active
+          : styles.navMenu
+        : styles.navMenu
+      } // 1
      >
       <li>
        <a href="#" className={styles.navLink}>
@@ -194,3 +194,6 @@ export default function Home() {
   </>
  );
 }
+
+//
+// 1. winObj is used bcoz we need the 'window' obj while setting the class names. window obj is not avab while the component is loading so we use the useEffect hook here. all this exercise is not hide navMenu when the user scrolls down in mobile view.
