@@ -25,6 +25,7 @@ function Service() {
 
  return (
   <div className={serviceStyles.main}>
+   <h3>Shoorvir.com</h3>
    <div className={serviceStyles.form}>
     <div className={serviceStyles.title}>नमस्ते</div>
     <div className={serviceStyles.subtitle}>How can we help you?</div>
@@ -88,7 +89,7 @@ function Service() {
     </button>
     <Link href="/">
      <div className={serviceStyles.back}>
-      <h5>Cancel</h5>
+      <h5>Home</h5>
      </div>
     </Link>
    </div>

@@ -6,6 +6,25 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+.main h3{
+    display: none;
+}
+@media (max-width:420px) {
+  .main{
+    margin-top: 40px;
+    min-width:100%;
+    position: absolute;
+  }
+  .main h3{
+    display: block;
+    position: relative;
+    top: -65px;
+    background-color: #f4c765;
+    text-align: center;
+    padding: 8px;
+    font-size: clamp(1.4rem, -0.875rem + 8.333vw, 3.5rem);    
+  }
+}
 
 .form {
   background-color: #15172b;
@@ -16,6 +35,12 @@
   width: 320px;
   margin: auto;
   margin-top: 3vh;
+}
+@media (max-width:420px) {
+ .form{
+    margin-top: 180px;
+    margin-left: 50px;  
+ }
 }
 
 .title {
@@ -29,7 +54,7 @@
 .subtitle {
   color: #eee;
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: clamp(1.4rem, -0.875rem + 8.333vw, 0.8rem);
   font-weight: 600;
   margin-top: 10px;
 }
@@ -54,7 +79,7 @@
   border: 0;
   box-sizing: border-box;
   color: #eee;
-  font-size: 18px;
+  font-size: clamp(1.3rem, -0.875rem + 8.333vw, 0.5rem);
   height: 100%;
   outline: 0;
   padding: 4px 20px 0;
@@ -85,6 +110,7 @@
 .placeholder {
   color: #65657b;
   font-family: sans-serif;
+  font-size: clamp(1.4rem, -0.875rem + 8.333vw, 0.8rem);
   left: 20px;
   line-height: 14px;
   pointer-events: none;
@@ -114,7 +140,8 @@
   box-sizing: border-box;
   color: #eee;
   cursor: pointer;
-  font-size: 18px;
+  font-size: clamp(1.2rem, -0.875rem + 8.333vw, 0.8rem);
+  /* font-size: 18px; */
   height: 50px;
   margin-top: 38px; 
   text-align: center;
@@ -128,4 +155,9 @@
 .back{
     text-align: center;
     color: azure;
+}
+.back h5{
+    font-size: clamp(1rem, -0.875rem + 8.333vw, 0.8rem);
+    margin: auto;
+    padding-top: 10px;
 }
