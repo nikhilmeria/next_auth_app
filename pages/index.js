@@ -115,26 +115,26 @@ export default function Home() {
       </div>
      </div>
     </Link>
-    <div className={styles.card + " " + styles.cardFixedWidth}>
-     <div className={styles.card__description}>
-      <Image src="/images/job.jpg" alt="Job" width={200} height={175} />
-     </div>
-     <div className={styles.card__text}>
-      <a href="http://">
+    <Link href="">
+     <div className={styles.card + " " + styles.cardFixedWidth}>
+      <div className={styles.card__description}>
+       <Image src="/images/job.jpg" alt="Job" width={200} height={175} />
+      </div>
+      <div className={styles.card__text}>
        <h3>Job</h3>
-      </a>
+      </div>
      </div>
-    </div>
-    <div className={styles.card + " " + styles.cardFixedWidth}>
-     <div className={styles.card__description}>
-      <Image src="/images/staff.jpg" alt="Staff" width={200} height={175} />
-     </div>
-     <div className={styles.card__text}>
-      <a href="http://">
+    </Link>
+    <Link href="">
+     <div className={styles.card + " " + styles.cardFixedWidth}>
+      <div className={styles.card__description}>
+       <Image src="/images/staff.jpg" alt="Staff" width={200} height={175} />
+      </div>
+      <div className={styles.card__text}>
        <h3>Staff</h3>
-      </a>
+      </div>
      </div>
-    </div>
+    </Link>
    </section>
 
    <section className={styles.yt}>
