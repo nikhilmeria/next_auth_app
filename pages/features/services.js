@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Link from "next/link";
 import serviceStyles from "../../styles/Services.module.css";
 
 function Service() {
@@ -24,32 +25,6 @@ function Service() {
 
  return (
   <>
-   {/* <div classNameName={serviceStyles.serv}>
-    <input
-     type="text"
-     value={myName}
-     onChange={(e) => setMyName(e.target.value)}
-     required
-    />
-    <input
-     type="tel"
-     value={myPhn}
-     onChange={(e) => setMyPhn(e.target.value)}
-     required
-    />
-
-    <form onSubmit={handleSubmit}>
-     <label htmlFor="serv">Service</label>
-     <select value={myValue} onChange={(e) => setMyValue(e.target.value)}>
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="opel">Opel</option>
-      <option value="audi">Audi</option>
-     </select>
-
-     <button type="submit">Submit</button>
-    </form>
-   </div> */}
    <div className={serviceStyles.form}>
     <div className={serviceStyles.title}>Welcome</div>
     <div className={serviceStyles.subtitle}>Let's create your account!</div>
@@ -90,8 +65,13 @@ function Service() {
      </label>
     </div>
     <button type="text" className={serviceStyles.submit}>
-     submit
+     Submit
     </button>
+    <Link href="/">
+     <div className={serviceStyles.back}>
+      <h5>Cancel</h5>
+     </div>
+    </Link>
    </div>
   </>
  );

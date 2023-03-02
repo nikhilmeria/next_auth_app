@@ -1,12 +1,12 @@
-
-
 .form {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 500px;
+  max-height: 525px;
   padding: 20px;
   width: 320px;
+  margin: auto;
+  margin-top: 15vh;
 }
 
 .title {
@@ -95,11 +95,11 @@
 }
 
 .input:focus ~ .placeholder {
-  color: #dc2f55;
+  color: #f9b728;
 }
 
 .submit {
-  background-color: #08d;
+  background-color: #f9b728;
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
@@ -113,5 +113,10 @@
 }
 
 .submit:active {
-  background-color: #06b;
+  color: #a490fb;
+}
+
+.back{
+    text-align: center;
+    color: azure;
 }

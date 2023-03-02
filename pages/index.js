@@ -100,16 +100,21 @@ export default function Home() {
    </section>
 
    <section className={styles.features}>
-    <div className={styles.card + " " + styles.cardFixedWidth}>
-     <div className={styles.card__description}>
-      <Image src="/images/service.png" alt="Service" width={200} height={175} />
-     </div>
-     <div className={styles.card__text}>
-      <Link href="/features/services">
+    <Link href="/features/services">
+     <div className={styles.card + " " + styles.cardFixedWidth}>
+      <div className={styles.card__description}>
+       <Image
+        src="/images/service.png"
+        alt="Service"
+        width={200}
+        height={175}
+       />
+      </div>
+      <div className={styles.card__text}>
        <h3>Service</h3>
-      </Link>
+      </div>
      </div>
-    </div>
+    </Link>
     <div className={styles.card + " " + styles.cardFixedWidth}>
      <div className={styles.card__description}>
       <Image src="/images/job.jpg" alt="Job" width={200} height={175} />
