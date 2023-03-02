@@ -5,17 +5,17 @@ import serviceStyles from "../../styles/Services.module.css";
 function Service() {
  const [myName, setMyName] = useState("");
  const [myPhn, setMyPhn] = useState("");
- const [myValue, setMyValue] = useState("");
+ const [myServ, setMyServ] = useState("");
 
  const handleSubmit = async (e) => {
   e.preventDefault();
   console.log(myName);
   console.log(myPhn);
-  console.log(myValue);
+  console.log(myServ);
 
   const response = await fetch("/api/form", {
    method: "POST",
-   body: JSON.stringify({myName, myPhn, myValue}),
+   body: JSON.stringify({myName, myPhn, myServ}),
    headers: {"Content-Type": "application/json"},
   });
 
@@ -24,47 +24,66 @@ function Service() {
  };
 
  return (
-  <>
+  <div className={serviceStyles.main}>
    <div className={serviceStyles.form}>
-    <div className={serviceStyles.title}>Welcome</div>
-    <div className={serviceStyles.subtitle}>Let's create your account!</div>
+    <div className={serviceStyles.title}>नमस्ते</div>
+    <div className={serviceStyles.subtitle}>How can we help you?</div>
     <div className={serviceStyles.inputContainer + " " + serviceStyles.ic1}>
      <input
-      id="firstname"
+      id="fullname"
       className={serviceStyles.input}
       type="text"
       placeholder=" "
+      required
+      onChange={(e) => setMyName(e.target.value)}
      />
      <div className={serviceStyles.cut}></div>
-     <label htmlFor="firstname" className={serviceStyles.placeholder}>
-      First name
+     <label htmlFor="fullname" className={serviceStyles.placeholder}>
+      Full name
      </label>
     </div>
     <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
      <input
-      id="lastname"
+      id="phnNo"
       className={serviceStyles.input}
-      type="text"
+      type="tel"
       placeholder=" "
+      required
+      onChange={(e) => setMyPhn(e.target.value)}
      />
      <div className={serviceStyles.cut}></div>
-     <label htmlFor="lastname" className={serviceStyles.placeholder}>
-      Last name
+     <label htmlFor="phnNo" className={serviceStyles.placeholder}>
+      Phone No
      </label>
     </div>
     <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
      <input
-      id="email"
+      id="add"
       className={serviceStyles.input}
       type="text"
       placeholder=" "
+      required
      />
      <div className={serviceStyles.cut + " " + serviceStyles.cutShort}></div>
-     <label htmlFor="email" className={serviceStyles.placeholder}>
-      Email
+     <label htmlFor="add" className={serviceStyles.placeholder}>
+      Address
      </label>
     </div>
-    <button type="text" className={serviceStyles.submit}>
+    <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
+     <input
+      id="serv"
+      className={serviceStyles.input}
+      type="text"
+      placeholder=" "
+      required
+      onChange={(e) => setMyServ(e.target.value)}
+     />
+     <div className={serviceStyles.cut + " " + serviceStyles.cutShort}></div>
+     <label htmlFor="serv" className={serviceStyles.placeholder}>
+      Service required
+     </label>
+    </div>
+    <button type="text" className={serviceStyles.submit} onClick={handleSubmit}>
      Submit
     </button>
     <Link href="/">
@@ -73,7 +92,7 @@ function Service() {
      </div>
     </Link>
    </div>
-  </>
+  </div>
  );
 }
 

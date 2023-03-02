@@ -1,12 +1,21 @@
+.main{
+  background-image: url("../public/images/services.webp");
+  max-width:100%;
+  min-height: 500px;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .form {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  max-height: 525px;
+  max-height: 600px;
   padding: 20px;
   width: 320px;
   margin: auto;
-  margin-top: 15vh;
+  margin-top: 3vh;
 }
 
 .title {
@@ -65,7 +74,7 @@
 }
 
 .cutShort {
-  width: 50px;
+  width: 110px;
 }
 
 .input:focus ~ .cut,
