@@ -19,7 +19,7 @@
     display: block;
     position: relative;
     top: -65px;
-    background-color: #f4c765;
+    background-color: rgb(255, 214, 48);
     text-align: center;
     padding: 8px;
     font-size: clamp(1.4rem, -0.875rem + 8.333vw, 3.5rem);    
@@ -161,3 +161,6 @@
     margin: auto;
     padding-top: 10px;
 }
+
+
+

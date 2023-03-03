@@ -1,5 +1,7 @@
 import {useState} from "react";
 import Link from "next/link";
+import {ToastContainer, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import serviceStyles from "../../styles/Services.module.css";
 
 function Service() {
@@ -21,6 +23,8 @@ function Service() {
 
   const {data} = await response.json();
   console.log("result : ", data);
+  toast.success("Wow so easy!");
+  //alert("form submitted successfully");
  };
 
  return (
@@ -87,6 +91,14 @@ function Service() {
     <button type="text" className={serviceStyles.submit} onClick={handleSubmit}>
      Submit
     </button>
+    <ToastContainer
+     autoClose={2000}
+     position="top-right"
+     theme="colored"
+     closeOnClick={true}
+     pauseOnHover={true}
+     hideProgressBar={false}
+    />
     <Link href="/">
      <div className={serviceStyles.back}>
       <h5>Home</h5>
@@ -98,3 +110,6 @@ function Service() {
 }
 
 export default Service;
+
+
+//note on using toast- no styling to be provided in styles file. 'toast' method used above will provide the necessary 
