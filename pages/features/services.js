@@ -1,5 +1,6 @@
 import {useState} from "react";
 import Link from "next/link";
+import {useRouter} from "next/router";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import serviceStyles from "../../styles/Services.module.css";
@@ -8,6 +9,7 @@ function Service() {
  const [myName, setMyName] = useState("");
  const [myPhn, setMyPhn] = useState("");
  const [myServ, setMyServ] = useState("");
+ const router = useRouter();
 
  const handleSubmit = async (e) => {
   e.preventDefault();
@@ -20,11 +22,10 @@ function Service() {
    body: JSON.stringify({myName, myPhn, myServ}),
    headers: {"Content-Type": "application/json"},
   });
-
   const {data} = await response.json();
   console.log("result : ", data);
-  toast.success("Wow so easy!");
-  //alert("form submitted successfully");
+  toast.success("Form submitted !");
+  // router.replace("/");
  };
 
  return (
@@ -92,7 +93,7 @@ function Service() {
      Submit
     </button>
     <ToastContainer
-     autoClose={2000}
+     autoClose={1500}
      position="top-right"
      theme="colored"
      closeOnClick={true}
