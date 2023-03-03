@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Script from "next/script";
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -99,36 +100,41 @@ export default function Home() {
    </section>
 
    <section className={styles.features}>
-    <div className={styles.card + " " + styles.cardFixedWidth}>
-     <div className={styles.card__description}>
-      <Image src="/images/service.png" alt="Service" width={200} height={175} />
-     </div>
-     <div className={styles.card__text}>
-      <a href="http://">
+    <Link href="/features/services">
+     <div className={styles.card + " " + styles.cardFixedWidth}>
+      <div className={styles.card__description}>
+       <Image
+        src="/images/service.png"
+        alt="Service"
+        width={200}
+        height={175}
+       />
+      </div>
+      <div className={styles.card__text}>
        <h3>Service</h3>
-      </a>
+      </div>
      </div>
-    </div>
-    <div className={styles.card + " " + styles.cardFixedWidth}>
-     <div className={styles.card__description}>
-      <Image src="/images/job.jpg" alt="Job" width={200} height={175} />
-     </div>
-     <div className={styles.card__text}>
-      <a href="http://">
+    </Link>
+    <Link href="">
+     <div className={styles.card + " " + styles.cardFixedWidth}>
+      <div className={styles.card__description}>
+       <Image src="/images/job.jpg" alt="Job" width={200} height={175} />
+      </div>
+      <div className={styles.card__text}>
        <h3>Job</h3>
-      </a>
+      </div>
      </div>
-    </div>
-    <div className={styles.card + " " + styles.cardFixedWidth}>
-     <div className={styles.card__description}>
-      <Image src="/images/staff.jpg" alt="Staff" width={200} height={175} />
-     </div>
-     <div className={styles.card__text}>
-      <a href="http://">
+    </Link>
+    <Link href="">
+     <div className={styles.card + " " + styles.cardFixedWidth}>
+      <div className={styles.card__description}>
+       <Image src="/images/staff.jpg" alt="Staff" width={200} height={175} />
+      </div>
+      <div className={styles.card__text}>
        <h3>Staff</h3>
-      </a>
+      </div>
      </div>
-    </div>
+    </Link>
    </section>
 
    <section className={styles.yt}>
