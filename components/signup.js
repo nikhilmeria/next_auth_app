@@ -8,10 +8,10 @@ export default async function signUp(email, password) {
   error = null;
  try {
   result = await createUserWithEmailAndPassword(auth, email, password);
-  console.log("Signup : ", result);
+  console.log("Signup fn: ", result.user);
  } catch (e) {
   error = e;
-  console.error("Signup error : ", error);
+  console.error("Signup fn error : ", error);
  }
 
  return {result, error};

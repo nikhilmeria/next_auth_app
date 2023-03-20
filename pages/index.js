@@ -61,8 +61,8 @@ export default function Home() {
        </a>
       </li>
       <li>
-       <a href="#" className={styles.navLink}>
-        Feedback
+       <a href="/auth/signUp" className={styles.navLink}>
+        Signup
        </a>
       </li>
       <li>
