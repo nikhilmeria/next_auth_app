@@ -12,6 +12,7 @@ function SignWithGoogle() {
 
  useEffect(() => {
   console.log("User in google signIn page : ", user);
+  //chk if user is logged in, yes-> push 2 home / sign page
   if (user != null) router.push("/");
  }, [user]);
 

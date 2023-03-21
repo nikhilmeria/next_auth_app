@@ -60,17 +60,17 @@ export default function Home() {
       </li>
       <li>
        <a href="/auth/signWithGoogle" className={styles.navLink}>
-        Google
+        About
        </a>
       </li>
       <li>
        <a href="/auth/signUp" className={styles.navLink}>
-        Signup
+        Feedback
        </a>
       </li>
       <li>
        <a href="/auth/signIn" className={styles.navLink}>
-        Login
+        Contact
        </a>
       </li>
      </ul>
