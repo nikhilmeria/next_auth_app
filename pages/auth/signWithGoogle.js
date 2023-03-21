@@ -1,11 +1,19 @@
-import {useState} from "react";
-import sign_in_google from "../../components/sign_google";
+import {useState, useEffect} from "react";
 import {useRouter} from "next/router";
 import GoogleButton from "react-google-button";
 
+import sign_in_google from "../../components/sign_google";
+import {useAuthContext} from "../../context/authContext";
+
 function SignWithGoogle() {
- const [email, setEmail] = useState("");
+ const {user} = useAuthContext();
+ const [usrData, setUsrData] = useState("");
  const router = useRouter();
+
+ useEffect(() => {
+  console.log("User in google signIn page : ", user);
+  if (user != null) router.push("/");
+ }, [user]);
 
  const handleForm = async () => {
   console.log("inside handleForm");
@@ -17,7 +25,6 @@ function SignWithGoogle() {
 
   // else successful
   console.log(resp);
-  return router.push("/");
  };
 
  return (

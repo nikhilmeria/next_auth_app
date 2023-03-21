@@ -1,9 +1,12 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Script from "next/script";
 import Link from "next/link";
+import {useRouter} from "next/router";
 import styles from "../styles/Home.module.css";
+
+import {Context} from "../context/authContext";
 
 export default function Home() {
  const [showDiv, setShowDiv] = useState(true);
