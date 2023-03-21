@@ -1,14 +1,15 @@
-import {useState, useEffect, useContext} from "react";
+import {useState, useEffect} from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Script from "next/script";
 import Link from "next/link";
-import {useRouter} from "next/router";
 import styles from "../styles/Home.module.css";
 
-import {Context} from "../context/authContext";
+import firebase_app from "../firebase_config";
+import {getAuth} from "firebase/auth";
 
 export default function Home() {
+ const auth = getAuth(firebase_app);
  const [showDiv, setShowDiv] = useState(true);
  const [clsName, setClsName] = useState(false);
  const [winObj, setWinObj] = useState(null); //1
@@ -64,13 +65,18 @@ export default function Home() {
        </a>
       </li>
       <li>
-       <a href="/auth/signUp" className={styles.navLink}>
+       <a href="" className={styles.navLink}>
         Feedback
        </a>
       </li>
       <li>
-       <a href="/auth/signIn" className={styles.navLink}>
+       <a href="" className={styles.navLink}>
         Contact
+       </a>
+      </li>
+      <li>
+       <a href="" className={styles.navLink} onClick={() => auth.signOut()}>
+        LogOut
        </a>
       </li>
      </ul>
