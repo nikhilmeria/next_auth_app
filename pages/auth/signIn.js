@@ -1,8 +1,8 @@
 import {useState} from "react";
-import signup from "../../components/signup";
+import signin from "../../components/signin";
 import {useRouter} from "next/router";
 
-function SignUp() {
+function signIn() {
  const [email, setEmail] = useState("");
  const [password, setPassword] = useState("");
  const router = useRouter();
@@ -10,14 +10,14 @@ function SignUp() {
  const handleForm = async (event) => {
   event.preventDefault();
 
-  const {result, error} = await signup(email, password);
+  const {result, error} = await signin(email, password);
 
   if (error) {
-   return console.log("Signup page err: ", error);
+   return console.log(error);
   }
 
   // else successful
-  console.log("Signup page : ", result);
+  console.log(result.user);
   return router.push("/");
  };
 
@@ -48,11 +48,11 @@ function SignUp() {
        placeholder="password"
       />
      </label>
-     <button type="submit">Sign up</button>
+     <button type="submit">Login</button>
     </form>
    </div>
   </div>
  );
 }
 
-export default SignUp;
+export default signIn;
