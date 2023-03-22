@@ -1,11 +1,5 @@
 import firebase_app from "../firebase_config";
-import {
- getAuth,
- GoogleAuthProvider,
- signInWithPopup,
- signOut,
- onAuthStateChanged,
-} from "firebase/auth";
+import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 
 export default async function signInGoogle() {
  let resp = null,
