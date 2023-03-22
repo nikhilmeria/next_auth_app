@@ -5,7 +5,7 @@ function Serv_chkout() {
  const router = useRouter();
  const {name} = router.query;
 
- console.log("Serv_chkout : ", name);
+ console.log("Serv_chkout = ", name);
 
  return <div>Service checkout = {name}</div>;
 }
