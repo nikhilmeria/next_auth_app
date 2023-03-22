@@ -6,7 +6,7 @@ import serviceStyles from "../../styles/Services.module.css";
 import GoogleButton from "react-google-button";
 
 import {useAuthContext} from "../../context/authContext";
-import sign_in_google from "../../components/sign_google";
+import sign_in_google from "../../components/auth/sign_google";
 
 function Service() {
  const {user} = useAuthContext();
