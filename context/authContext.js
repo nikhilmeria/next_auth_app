@@ -12,7 +12,7 @@ function AuthContextProvider({children}) {
  console.log("Inside authContext file");
  const [user, setUser] = useState();
  const [err, setErr] = useState();
- const [loading, setLoading] = useState(true);
+ //const [loading, setLoading] = useState(true);
 
  useEffect(() => {
   const unsubscribe = onAuthStateChanged(auth, (usr) => {
@@ -21,17 +21,18 @@ function AuthContextProvider({children}) {
    } else {
     setUser(null);
    }
-   setLoading(false);
+   //setLoading(false);
   });
 
   return () => {
    unsubscribe();
   };
- }, []);
+ }, [user]);
 
  return (
   <AuthContext.Provider value={{user}}>
-   {loading ? <div>Loading...</div> : children}
+   {/* {loading ? <div>Loading...</div> : children} */}
+   {children}
   </AuthContext.Provider>
  );
 }

@@ -62,17 +62,17 @@ export default function Home() {
        </a>
       </li>
       <li>
-       <a href="/auth/signWithGoogle" className={styles.navLink}>
+       <a href="/about" className={styles.navLink}>
         About
        </a>
       </li>
       <li>
-       <a href="" className={styles.navLink}>
+       <a href="/feedback" className={styles.navLink}>
         Feedback
        </a>
       </li>
       <li>
-       <a href="" className={styles.navLink}>
+       <a href="#contact" className={styles.navLink}>
         Contact
        </a>
       </li>
@@ -115,7 +115,9 @@ export default function Home() {
       aliquid magnam repellat, quaerat, deserunt eveniet nobis perspiciatis rum
       impedit unde consectetur adipisicing.
      </p>
-     <button className={styles.button + " " + styles.button1}>Read More</button>
+     <button className={styles.button + " " + styles.button1}>
+      <a href="/about">Read More</a>
+     </button>
     </div>
    </section>
 
@@ -186,7 +188,8 @@ export default function Home() {
     </div>
    </section>
 
-   <footer className={styles.foot}>
+   {/* Contact */}
+   <footer id="contact" className={styles.foot}>
     <div className={styles.footCard}>
      <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d448693.88667775143!2d76.92807570120118!3d28.52706325802526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1676648066694!5m2!1sen!2sin"
