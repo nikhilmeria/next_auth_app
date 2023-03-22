@@ -7,8 +7,10 @@ import styles from "../styles/Home.module.css";
 
 import firebase_app from "../firebase_config";
 import {getAuth} from "firebase/auth";
+import {useAuthContext} from "../context/authContext";
 
 export default function Home() {
+ const {user} = useAuthContext();
  const auth = getAuth(firebase_app);
  const [showDiv, setShowDiv] = useState(true);
  const [clsName, setClsName] = useState(false);
@@ -74,11 +76,20 @@ export default function Home() {
         Contact
        </a>
       </li>
-      <li>
-       <a href="" className={styles.navLink} onClick={() => auth.signOut()}>
-        LogOut
-       </a>
-      </li>
+      {user && (
+       <li>
+        <a
+         href=""
+         className={styles.navLink}
+         onClick={(e) => {
+          e.preventDefault();
+          auth.signOut();
+         }}
+        >
+         LogOut
+        </a>
+       </li>
+      )}
      </ul>
      <div
       className={
