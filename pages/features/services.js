@@ -1,5 +1,6 @@
 import {useState} from "react";
 import Link from "next/link";
+import {useRouter} from "next/router";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import serviceStyles from "../../styles/Services.module.css";
@@ -9,6 +10,7 @@ import {useAuthContext} from "../../context/authContext";
 import sign_in_google from "../../components/auth/sign_google";
 
 function Service() {
+ const router = useRouter();
  const {user} = useAuthContext();
  const [myName, setMyName] = useState("");
  const [myPhn, setMyPhn] = useState("");
@@ -27,19 +29,29 @@ function Service() {
 
  const handleSubmit = async (e) => {
   e.preventDefault();
-  //   console.log(myName);
-  //   console.log(myPhn);
-  //   console.log(myServ);
+  console.log(myName);
+  console.log(myPhn);
+  console.log(myServ);
 
-  const response = await fetch("/api/form", {
-   method: "POST",
-   body: JSON.stringify({myName, myPhn, myServ}),
-   headers: {"Content-Type": "application/json"},
-  });
-  const {data} = await response.json();
-  //console.log("result : ", data);
+  setTimeout(async function () {
+   try {
+    const response = await fetch("/api/form", {
+     method: "POST",
+     body: JSON.stringify({myName, myPhn, myServ}),
+     headers: {"Content-Type": "application/json"},
+    });
+    const {data} = await response.json();
+
+    console.log("result : ", data);
+   } catch (error) {
+    console.error(error);
+   } finally {
+    // use this method to pass data frm one page to another
+    router.replace({pathname: "/features/serv_chkout", query: {name: myName}});
+   }
+  }, 3000);
+
   toast.success("Form submitted !");
-  // router.replace("/");
  };
 
  return (
@@ -81,19 +93,6 @@ function Service() {
        </div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
         <input
-         id="add"
-         className={serviceStyles.input}
-         type="text"
-         placeholder=" "
-         required
-        />
-        <div className={serviceStyles.cut + " " + serviceStyles.cutShort}></div>
-        <label htmlFor="add" className={serviceStyles.placeholder}>
-         Address
-        </label>
-       </div>
-       <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
-        <input
          id="serv"
          className={serviceStyles.input}
          type="text"
@@ -114,7 +113,7 @@ function Service() {
         Submit
        </button>
        <ToastContainer
-        autoClose={1500}
+        autoClose={1000}
         position="top-right"
         theme="colored"
         closeOnClick={true}
