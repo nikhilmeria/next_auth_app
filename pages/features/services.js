@@ -33,25 +33,36 @@ function Service() {
   console.log(myPhn);
   console.log(myServ);
 
-  setTimeout(async function () {
-   try {
-    const response = await fetch("/api/form", {
-     method: "POST",
-     body: JSON.stringify({myName, myPhn, myServ}),
-     headers: {"Content-Type": "application/json"},
-    });
-    const {data} = await response.json();
+  // validate data here
 
-    console.log("result : ", data);
-   } catch (error) {
-    console.error(error);
-   } finally {
-    // use this method to pass data frm one page to another
-    router.replace({pathname: "/features/serv_chkout", query: {name: myName}});
-   }
-  }, 3000);
+  // use this method to pass data frm one page to another
+  router.replace({
+   pathname: "/features/serv_chkout",
+   query: {name: myName, no: myPhn, serv: myServ},
+  });
 
-  toast.success("Form submitted !");
+  //   setTimeout(async function () {
+  //    try {
+  //     const response = await fetch("/api/form", {
+  //      method: "POST",
+  //      body: JSON.stringify({myName, myPhn, myServ}),
+  //      headers: {"Content-Type": "application/json"},
+  //     });
+  //     const {data} = await response.json();
+
+  //     console.log("result : ", data);
+  //    } catch (error) {
+  //     console.error(error);
+  //    } finally {
+  //     // use this method to pass data frm one page to another
+  //     router.replace({
+  //      pathname: "/features/serv_chkout",
+  //      query: {name: myName, no: myPhn, serv: myServ},
+  //     });
+  //    }
+  //   }, 3000);
+
+  //   toast.success("Form submitted !");
  };
 
  return (
