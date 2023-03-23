@@ -24,7 +24,7 @@ function Service() {
    return console.log(error);
   }
   // else successful
-  console.log(resp);
+  console.log(resp.user.uid);
  };
 
  const handleSubmit = async (e) => {
@@ -38,27 +38,6 @@ function Service() {
    pathname: "/features/serv_chkout",
    query: {name: myName, no: myPhn, serv: myServ, user_id: user.uid},
   });
-
-  //   setTimeout(async function () {
-  //    try {
-  //     const response = await fetch("/api/form", {
-  //      method: "POST",
-  //      body: JSON.stringify({myName, myPhn, myServ}),
-  //      headers: {"Content-Type": "application/json"},
-  //     });
-  //     const {data} = await response.json();
-
-  //     console.log("result : ", data);
-  //    } catch (error) {
-  //     console.error(error);
-  //    } finally {
-  //     // use this method to pass data frm one page to another
-  //     router.replace({
-  //      pathname: "/features/serv_chkout",
-  //      query: {name: myName, no: myPhn, serv: myServ},
-  //     });
-  //    }
-  //   }, 3000);
 
   //   toast.success("Form submitted !");
  };
