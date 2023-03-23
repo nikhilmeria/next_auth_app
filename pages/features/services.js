@@ -29,16 +29,14 @@ function Service() {
 
  const handleSubmit = async (e) => {
   e.preventDefault();
-  console.log(myName);
-  console.log(myPhn);
-  console.log(myServ);
+  console.log(user.uid);
 
   // validate data here
 
   // use this method to pass data frm one page to another
   router.replace({
    pathname: "/features/serv_chkout",
-   query: {name: myName, no: myPhn, serv: myServ},
+   query: {name: myName, no: myPhn, serv: myServ, user_id: user.uid},
   });
 
   //   setTimeout(async function () {

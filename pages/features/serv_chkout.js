@@ -1,13 +1,12 @@
 import {useState} from "react";
 import {useRouter} from "next/router";
-import {async} from "@firebase/util";
 
 function Serv_chkout() {
  const router = useRouter();
- const {name, no, serv} = router.query; //data coming frm service page
+ const {name, no, serv, user_id} = router.query; //data coming frm service page
  const [address, setAddress] = useState("");
 
- console.log("Serv_chkout = ", serv);
+ console.log("Serv_chkout = ", user_id);
 
  const handleSubmit = async (e) => {
   e.preventDefault();
@@ -16,7 +15,7 @@ function Serv_chkout() {
   try {
    const response = await fetch("/api/form", {
     method: "POST",
-    body: JSON.stringify({name, no, serv, address}),
+    body: JSON.stringify({name, no, serv, address, user_id}),
     headers: {"Content-Type": "application/json"},
    });
    const {data} = await response.json();

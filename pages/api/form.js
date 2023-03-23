@@ -1,5 +1,5 @@
 import firebase_app from "../../firebase_config";
-import {getFirestore, collection, addDoc} from "firebase/firestore";
+import {getFirestore, addDoc, Timestamp, collection} from "firebase/firestore";
 
 const db = getFirestore(firebase_app);
 
@@ -8,15 +8,19 @@ export default async function formHandler(req, res) {
  const no = req.body.no;
  const serv = req.body.serv;
  const address = req.body.address;
+ const userId = req.body.user_id;
 
  if (req.method === "POST") {
   try {
    const docRef = await addDoc(collection(db, "services"), {
+    userId: userId,
     name: name,
     phone_no: no,
     service_req: serv,
     address: address,
+    date: Timestamp.fromDate(new Date()),
    });
+
    console.log("Document written with ID: ", docRef.id);
   } catch (err) {
    console.error("err in form api = ", err);
