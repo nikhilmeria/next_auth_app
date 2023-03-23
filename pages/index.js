@@ -76,6 +76,12 @@ export default function Home() {
         Contact
        </a>
       </li>
+      <li>
+       <a href="/profile" className={styles.navLink}>
+        Profile
+       </a>
+      </li>
+      <li></li>
       {user && (
        <li>
         <a
