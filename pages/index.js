@@ -1,5 +1,7 @@
 import {useState, useEffect} from "react";
 import Head from "next/head";
+import {useRouter} from "next/router";
+
 import Image from "next/image";
 import Script from "next/script";
 import Link from "next/link";
@@ -12,9 +14,13 @@ import {useAuthContext} from "../context/authContext";
 export default function Home() {
  const {user} = useAuthContext();
  const auth = getAuth(firebase_app);
+ const router = useRouter();
+ const routerData = router.query;
  const [showDiv, setShowDiv] = useState(true);
  const [clsName, setClsName] = useState(false);
  const [winObj, setWinObj] = useState(null); //1
+
+ console.log("routerData : ", routerData);
 
  useEffect(() => {
   setWinObj(window);

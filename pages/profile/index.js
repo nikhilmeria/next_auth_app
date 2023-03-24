@@ -39,7 +39,10 @@ function Profile() {
    const docSnap = await getDoc(docRef);
    if (docSnap.exists()) {
     console.log("Document data:", docSnap.data());
-    router.replace("/");
+    router.replace({
+     pathname: "/",
+     query: docSnap.data(),
+    });
    } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");
