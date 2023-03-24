@@ -8,6 +8,7 @@ import GoogleButton from "react-google-button";
 import firebase_app from "../../firebase_config";
 import sign_in_google from "../../components/auth/sign_google";
 import addUser2DB from "../../components/db/userData";
+import {useAuthContext} from "../../context/authContext";
 
 const db = getFirestore(firebase_app);
 
@@ -16,6 +17,7 @@ function Profile() {
 
  let docRef = null;
  let userId = null;
+ const {user} = useAuthContext();
  const [name, setName] = useState("");
  const [phnNo, setPhnNO] = useState(0);
  const [address, setAddress] = useState("");
@@ -32,7 +34,7 @@ function Profile() {
   // else successful
   else {
    console.log(resp.user.uid);
-   userId = resp.user.uid;
+
    docRef = doc(db, "users", resp.user.uid);
    const docSnap = await getDoc(docRef);
    if (docSnap.exists()) {
@@ -49,8 +51,8 @@ function Profile() {
  const handleSubmit = async (e) => {
   e.preventDefault();
 
-  // add user data to user db in firestore
-  const dbResp = await addUser2DB("users", userId, {
+  // add user data to users db in firestore
+  const dbResp = await addUser2DB("users", user.uid, {
    name: name,
    Phone_No: phnNo,
    Address: address,
@@ -70,7 +72,7 @@ function Profile() {
      <input type="number" onChange={(e) => setPhnNO(e.target.value)} />
      <label>Enter Address : </label>
      <input type="text" onChange={(e) => setAddress(e.target.value)} />
-     <Submit type="submit">Submit</Submit>
+     <Button type="submit">Submit</Button>
     </form>
    )}
    {!newUser && <GoogleButton type="dark" onClick={handleSignIN} />}
