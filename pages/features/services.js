@@ -6,8 +6,12 @@ import "react-toastify/dist/ReactToastify.css";
 import serviceStyles from "../../styles/Services.module.css";
 //import GoogleButton from "react-google-button";
 
+import firebase_app from "../../firebase_config";
+import {getFirestore, doc, getDoc} from "firebase/firestore";
 import {useAuthContext} from "../../context/authContext";
 //import sign_in_google from "../../components/auth/sign_google";
+
+const db = getFirestore(firebase_app);
 
 function Service() {
  const router = useRouter();
@@ -133,5 +137,25 @@ function Service() {
 }
 
 export default Service;
+
+export async function getStaticProps(context) {
+ const {params} = context;
+ console.log("aaa : ", context);
+ //  const docRef = doc(db, "users", "JiOXk3o40bgwidWMCT2sIuSOL6R2");
+ //  const docSnap = await getDoc(docRef);
+
+ //  if (docSnap.exists()) {
+ //   console.log("Document data:", docSnap.data());
+ //  } else {
+ //   // doc.data() will be undefined in this case
+ //   console.log("No such document!");
+ //  }
+
+ return {
+  props: {
+   data: "abcd",
+  },
+ };
+}
 
 //note on using toast- no styling to be provided in styles file. 'toast' method used above will provide the necessary

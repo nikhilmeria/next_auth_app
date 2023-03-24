@@ -15,12 +15,11 @@ export default function Home() {
  const {user} = useAuthContext();
  const auth = getAuth(firebase_app);
  const router = useRouter();
- const routerData = router.query;
  const [showDiv, setShowDiv] = useState(true);
  const [clsName, setClsName] = useState(false);
  const [winObj, setWinObj] = useState(null); //1
 
- console.log("routerData : ", routerData);
+ user && console.log("user in home : ", user.uid);
 
  useEffect(() => {
   setWinObj(window);
@@ -82,12 +81,13 @@ export default function Home() {
         Contact
        </a>
       </li>
-      <li>
-       <a href="/profile" className={styles.navLink}>
-        Profile
-       </a>
-      </li>
-      <li></li>
+      {!user && (
+       <li>
+        <a href="/profile" className={styles.navLink}>
+         Profile
+        </a>
+       </li>
+      )}
       {user && (
        <li>
         <a
@@ -134,7 +134,7 @@ export default function Home() {
    </section>
 
    <section className={styles.features}>
-    <Link href="/features/services">
+    <Link href={{pathname: "/features/services"}}>
      <div className={styles.card + " " + styles.cardFixedWidth}>
       <div className={styles.card__description}>
        <Image
