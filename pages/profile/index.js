@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {Button} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import GoogleButton from "react-google-button";
 
 import sign_in_google from "../../components/auth/sign_google";
