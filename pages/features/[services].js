@@ -16,10 +16,10 @@ const db = getFirestore(firebase_app);
 function Service(props) {
  const router = useRouter();
  const {user} = useAuthContext();
- const [myName, setMyName] = useState("");
- const [myPhn, setMyPhn] = useState("");
- const [myServ, setMyServ] = useState("");
- const [myAdd, setMyAdd] = useState("");
+ const [myName, setMyName] = useState(null);
+ const [myPhn, setMyPhn] = useState(null);
+ const [myServ, setMyServ] = useState(null);
+ const [myAdd, setMyAdd] = useState(null);
 
  console.log("Props in services : ", props);
 
@@ -30,11 +30,22 @@ function Service(props) {
  const handleSubmit = async (e) => {
   e.preventDefault();
   console.log(user.uid);
+  console.log("name in services : ", myName);
+  console.log("address in services : ", myAdd);
+  console.log("phone in services : ", myPhn);
+
+  // validate data here
 
   try {
    const response = await fetch("/api/form", {
     method: "POST",
-    body: JSON.stringify({myName, myPhn, myServ, myAdd, user_id: user.uid}),
+    body: JSON.stringify({
+     nm: myName ? myName : props.user_name, //1
+     ph: myPhn ? myPhn : props.Phone_No,
+     myServ,
+     adr: myAdd ? myAdd : props.Address,
+     user_id: user.uid,
+    }),
     headers: {"Content-Type": "application/json"},
    });
    const {data} = await response.json();
@@ -42,10 +53,12 @@ function Service(props) {
    console.log("result in service page : ", data);
   } catch (error) {
    console.error(error);
+   toast.error("Something went wrong, try again !");
   } finally {
-   //router.replace("/");
+   router.replace("/");
   }
  };
+
  //  const handleSignIN = async () => {
  //   console.log("inside handleSignIN");
  //   const {resp, error} = await sign_in_google();
@@ -91,7 +104,7 @@ function Service(props) {
         <div className={serviceStyles.subtitle}>How can we help you?</div>
         <div className={serviceStyles.inputContainer + " " + serviceStyles.ic1}>
          <input
-          defaultValue={props.user_name && props.user_name}
+          defaultValue={props.user_name}
           id="fullname"
           className={serviceStyles.input}
           type="text"
@@ -106,7 +119,7 @@ function Service(props) {
         </div>
         <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
          <input
-          defaultValue={props.Phone_No && props.Phone_No}
+          defaultValue={props.Phone_No}
           id="phnNo"
           className={serviceStyles.input}
           type="tel"
@@ -121,7 +134,7 @@ function Service(props) {
         </div>
         <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
          <input
-          defaultValue={props.Address && props.Address}
+          defaultValue={props.Address}
           id="add"
           className={serviceStyles.input}
           type="text"
@@ -206,12 +219,13 @@ export async function getServerSideProps(context) {
   console.log("No such document!");
   return {
    props: {
-    Address: null,
-    user_name: null,
-    Phone_No: null,
+    Address: "",
+    user_name: "",
+    Phone_No: "",
    },
   };
  }
 }
 
 //note on using toast- no styling to be provided in styles file. 'toast' method used above will provide the necessary
+//1. this way data is passed in body bcoz we want to chk if user has changed default data in the form or no.
