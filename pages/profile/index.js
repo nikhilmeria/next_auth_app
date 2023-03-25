@@ -55,7 +55,7 @@ function Profile() {
 
   // add user data to users db in firestore
   const dbResp = await addUser2DB("users", user.uid, {
-   name: name,
+   user_name: name,
    Phone_No: phnNo,
    Address: address,
   });

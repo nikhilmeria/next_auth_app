@@ -13,17 +13,39 @@ import {useAuthContext} from "../../context/authContext";
 
 const db = getFirestore(firebase_app);
 
-function Service() {
+function Service(props) {
  const router = useRouter();
  const {user} = useAuthContext();
  const [myName, setMyName] = useState("");
  const [myPhn, setMyPhn] = useState("");
  const [myServ, setMyServ] = useState("");
+ const [myAdd, setMyAdd] = useState("");
+
+ console.log("Props in services : ", props);
 
  useEffect(() => {
   !user && router.replace("/profile");
  }, []);
 
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  console.log(user.uid);
+
+  try {
+   const response = await fetch("/api/form", {
+    method: "POST",
+    body: JSON.stringify({myName, myPhn, myServ, myAdd, user_id: user.uid}),
+    headers: {"Content-Type": "application/json"},
+   });
+   const {data} = await response.json();
+
+   console.log("result in service page : ", data);
+  } catch (error) {
+   console.error(error);
+  } finally {
+   //router.replace("/");
+  }
+ };
  //  const handleSignIN = async () => {
  //   console.log("inside handleSignIN");
  //   const {resp, error} = await sign_in_google();
@@ -35,20 +57,27 @@ function Service() {
  //   console.log(resp.user.uid);
  //  };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  console.log(user.uid);
+ // old Method when I had serv_chkout page.
+ //  const handleSubmit = async (e) => {
+ //   e.preventDefault();
+ //   console.log(user.uid);
 
-  // validate data here
+ //   // validate data here
 
-  // use this method to pass data frm one page to another
-  router.replace({
-   pathname: "/features/serv_chkout",
-   query: {name: myName, no: myPhn, serv: myServ, user_id: user.uid},
-  });
+ //   // use this method to pass data frm one page to another
+ //   router.replace({
+ //    pathname: "/features/serv_chkout",
+ //    query: {
+ //     name: myName,
+ //     no: myPhn,
+ //     serv: myServ,
+ //     address: myAdd,
+ //     user_id: user.uid,
+ //    },
+ //   });
 
-  //   toast.success("Form submitted !");
- };
+ //   //   toast.success("Form submitted !");
+ //  };
 
  return (
   <>
@@ -62,6 +91,7 @@ function Service() {
         <div className={serviceStyles.subtitle}>How can we help you?</div>
         <div className={serviceStyles.inputContainer + " " + serviceStyles.ic1}>
          <input
+          defaultValue={props.user_name && props.user_name}
           id="fullname"
           className={serviceStyles.input}
           type="text"
@@ -76,6 +106,7 @@ function Service() {
         </div>
         <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
          <input
+          defaultValue={props.Phone_No && props.Phone_No}
           id="phnNo"
           className={serviceStyles.input}
           type="tel"
@@ -86,6 +117,21 @@ function Service() {
          <div className={serviceStyles.cut}></div>
          <label htmlFor="phnNo" className={serviceStyles.placeholder}>
           Phone No
+         </label>
+        </div>
+        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
+         <input
+          defaultValue={props.Address && props.Address}
+          id="add"
+          className={serviceStyles.input}
+          type="text"
+          placeholder=" "
+          required
+          onChange={(e) => setMyAdd(e.target.value)}
+         />
+         <div className={serviceStyles.cut}></div>
+         <label htmlFor="add" className={serviceStyles.placeholder}>
+          Address
          </label>
         </div>
         <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
@@ -138,24 +184,34 @@ function Service() {
 
 export default Service;
 
-export async function getStaticProps(context) {
- const {params} = context;
- console.log("aaa : ", context);
- //  const docRef = doc(db, "users", "JiOXk3o40bgwidWMCT2sIuSOL6R2");
- //  const docSnap = await getDoc(docRef);
+export async function getServerSideProps(context) {
+ console.log("ID in servData : ", context.query.uid);
 
- //  if (docSnap.exists()) {
- //   console.log("Document data:", docSnap.data());
- //  } else {
- //   // doc.data() will be undefined in this case
- //   console.log("No such document!");
- //  }
+ const docRef = doc(db, "users", context.query.uid);
+ const docSnap = await getDoc(docRef);
 
- return {
-  props: {
-   data: "abcd",
-  },
- };
+ if (docSnap.exists()) {
+  console.log("Document data 1 :", docSnap.data());
+  const {user_name, Address, Phone_No} = docSnap.data();
+  console.log("Document data 2 : ", user_name);
+  return {
+   props: {
+    Address,
+    user_name,
+    Phone_No,
+   },
+  };
+ } else {
+  // doc.data() will be undefined in this case
+  console.log("No such document!");
+  return {
+   props: {
+    Address: null,
+    user_name: null,
+    Phone_No: null,
+   },
+  };
+ }
 }
 
 //note on using toast- no styling to be provided in styles file. 'toast' method used above will provide the necessary

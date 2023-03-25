@@ -134,7 +134,7 @@ export default function Home() {
    </section>
 
    <section className={styles.features}>
-    <Link href={{pathname: "/features/services"}}>
+    <Link href={{pathname: "/features/services", query: user}}>
      <div className={styles.card + " " + styles.cardFixedWidth}>
       <div className={styles.card__description}>
        <Image

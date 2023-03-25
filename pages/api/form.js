@@ -4,10 +4,10 @@ import {getFirestore, addDoc, Timestamp, collection} from "firebase/firestore";
 const db = getFirestore(firebase_app);
 
 export default async function formHandler(req, res) {
- const name = req.body.name;
- const no = req.body.no;
- const serv = req.body.serv;
- const address = req.body.address;
+ const name = req.body.myName;
+ const no = req.body.myPhn;
+ const serv = req.body.myServ;
+ const address = req.body.myAdd;
  const userId = req.body.user_id;
 
  if (req.method === "POST") {
