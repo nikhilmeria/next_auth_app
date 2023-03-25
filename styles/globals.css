@@ -18,4 +18,8 @@ a {
   box-sizing: border-box;
 }
 
+:root {
+  scroll-behavior: auto !important;
+}
+
 

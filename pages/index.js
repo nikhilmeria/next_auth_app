@@ -62,35 +62,35 @@ export default function Home() {
       } // 1
      >
       <li>
-       <a href="#" className={styles.navLink}>
+       <Link href="#" className={styles.navLink}>
         Home
-       </a>
+       </Link>
       </li>
       <li>
-       <a href="/about" className={styles.navLink}>
+       <Link href="/about" className={styles.navLink}>
         About
-       </a>
+       </Link>
       </li>
       <li>
-       <a href="/feedback" className={styles.navLink}>
+       <Link href="/feedback" className={styles.navLink}>
         Feedback
-       </a>
+       </Link>
       </li>
       <li>
-       <a href="#contact" className={styles.navLink}>
+       <Link href="#contact" className={styles.navLink}>
         Contact
-       </a>
+       </Link>
       </li>
       {!user && (
        <li>
-        <a href="/profile" className={styles.navLink}>
-         Profile
-        </a>
+        <Link href="/profile" className={styles.navLink}>
+         Login
+        </Link>
        </li>
       )}
       {user && (
        <li>
-        <a
+        <Link
          href=""
          className={styles.navLink}
          onClick={(e) => {
@@ -99,7 +99,7 @@ export default function Home() {
          }}
         >
          LogOut
-        </a>
+        </Link>
        </li>
       )}
      </ul>

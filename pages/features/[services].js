@@ -200,31 +200,38 @@ export default Service;
 export async function getServerSideProps(context) {
  console.log("ID in servData : ", context.query.uid);
 
- const docRef = doc(db, "users", context.query.uid);
- const docSnap = await getDoc(docRef);
+ if (context.query.uid) {
+  const docRef = doc(db, "users", context.query.uid);
+  const docSnap = await getDoc(docRef);
 
- if (docSnap.exists()) {
-  console.log("Document data 1 :", docSnap.data());
-  const {user_name, Address, Phone_No} = docSnap.data();
-  console.log("Document data 2 : ", user_name);
-  return {
-   props: {
-    Address,
-    user_name,
-    Phone_No,
-   },
-  };
+  if (docSnap.exists()) {
+   console.log("Document data 1 :", docSnap.data());
+   const {user_name, Address, Phone_No} = docSnap.data();
+   console.log("Document data 2 : ", user_name);
+   return {
+    props: {
+     Address,
+     user_name,
+     Phone_No,
+    },
+   };
+  } else {
+   // doc.data() will be undefined in this case
+   console.log("No such document!");
+   return {
+    props: {
+     Address: "",
+     user_name: "",
+     Phone_No: "",
+    },
+   };
+  }
  } else {
-  // doc.data() will be undefined in this case
-  console.log("No such document!");
   return {
-   props: {
-    Address: "",
-    user_name: "",
-    Phone_No: "",
-   },
+   props: {},
   };
  }
+
 }
 
 //note on using toast- no styling to be provided in styles file. 'toast' method used above will provide the necessary

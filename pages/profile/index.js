@@ -1,14 +1,13 @@
 import {useState} from "react";
 import {useRouter} from "next/router";
 import {getFirestore, doc, getDoc} from "firebase/firestore";
-import {Button} from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import GoogleButton from "react-google-button";
 
 import firebase_app from "../../firebase_config";
 import sign_in_google from "../../components/auth/sign_google";
 import addUser2DB from "../../components/db/userData";
 import {useAuthContext} from "../../context/authContext";
+import profileStyles from "../../styles/Profile.module.css";
 
 const db = getFirestore(firebase_app);
 
@@ -64,7 +63,7 @@ function Profile() {
  };
 
  return (
-  <div>
+  <div className={profileStyles.main}>
    <h2> Profile page </h2>
    {newUser && (
     <form onSubmit={handleSubmit}>
@@ -77,7 +76,13 @@ function Profile() {
      <Button type="submit">Submit</Button>
     </form>
    )}
-   {!newUser && <GoogleButton type="dark" onClick={handleSignIN} />}
+   {!newUser && (
+    <GoogleButton
+     className={profileStyles.goglBtn}
+     type="dark"
+     onClick={handleSignIN}
+    />
+   )}
   </div>
  );
 }
