@@ -11,12 +11,16 @@
 }
 
 .main h2{
-   background-color: aliceblue;
+  background-color: #299bed;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 -3px 3px rgba(0, 0, 0, 0.3) inset, 0 -3px 3px rgba(255, 255, 255, 0.1) inset;
 }
 
 .goglBtn{
   align-self:center;
-  margin-top: 10em;
+  margin-top: 25%;
 }
 
 .form {
