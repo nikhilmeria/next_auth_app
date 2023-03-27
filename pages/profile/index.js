@@ -9,21 +9,17 @@ import addUser2DB from "../../components/db/userData";
 import {useAuthContext} from "../../context/authContext";
 import profileStyles from "../../styles/Profile.module.css";
 
-
 const db = getFirestore(firebase_app);
 
 function Profile() {
  const router = useRouter();
 
  let docRef = null;
- let userId = null;
  const {user} = useAuthContext();
- //  const [name, setName] = useState("");
- //  const [phnNo, setPhnNO] = useState(0);
- //  const [address, setAddress] = useState("");
  const [formData, setFormData] = useState({});
  const [newUser, setNewUser] = useState(false);
 
+ // fn to signin/register to google acc in firebase auth
  const handleSignIN = async (e) => {
   e.preventDefault();
 
@@ -58,21 +54,23 @@ function Profile() {
   });
  };
 
+ // if usr signin's to google acc & provides other details than add them to 'users' db
  const handleSubmit = async (e) => {
   e.preventDefault();
 
   console.log("resp from DB 1 : ", formData);
 
-  // add user data to users db in firestore
-  //   const dbResp = await addUser2DB("users", user.uid, {
-  //    user_name: name,
-  //    Phone_No: phnNo,
-  //    Address: address,
-  //   });
-  //   console.log("resp from DB : ", dbResp);
-  //   router.replace("/");
+  // add user data to 'users' db in firestore
+  const dbResp = await addUser2DB("users", user.uid, {
+   user_name: formData.name,
+   Phone_No: formData.phnNo,
+   Address: formData.address,
+  });
+  console.log("resp from DB : ", dbResp);
+  router.replace("/");
  };
 
+ // delete user auth acc if other details nt provided
  const delUsrAcc = async () => {
   if (user) {
    await user.delete(); // 1
@@ -100,7 +98,7 @@ function Profile() {
       required
      />
 
-     <label className={profileStyles.formLabel} htmlFor="email">
+     <label className={profileStyles.formLabel} htmlFor="phnNo">
       Phone No:
      </label>
      <input
@@ -113,7 +111,7 @@ function Profile() {
       required
      />
 
-     <label className={profileStyles.formLabel} htmlFor="email">
+     <label className={profileStyles.formLabel} htmlFor="address">
       Address:
      </label>
      <input
@@ -130,15 +128,6 @@ function Profile() {
       Submit
      </button>
     </form>
-    // <form onSubmit={handleSubmit}>
-    //  <label>Enter Name : </label>
-    //  <input type="text" onChange={(e) => setName(e.target.value)} />
-    //  <label>Enter Phone No : </label>
-    //  <input type="number" onChange={(e) => setPhnNO(e.target.value)} />
-    //  <label>Enter Address : </label>
-    //  <input type="text" onChange={(e) => setAddress(e.target.value)} />
-    //  <button type="submit">Submit</button>
-    // </form>
    )}
    {!newUser && (
     <GoogleButton
