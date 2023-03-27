@@ -8,6 +8,7 @@ import sign_in_google from "../../components/auth/sign_google";
 import addUser2DB from "../../components/db/userData";
 import {useAuthContext} from "../../context/authContext";
 import profileStyles from "../../styles/Profile.module.css";
+import Link from "next/link";
 
 const db = getFirestore(firebase_app);
 
@@ -17,9 +18,10 @@ function Profile() {
  let docRef = null;
  let userId = null;
  const {user} = useAuthContext();
- const [name, setName] = useState("");
- const [phnNo, setPhnNO] = useState(0);
- const [address, setAddress] = useState("");
+ //  const [name, setName] = useState("");
+ //  const [phnNo, setPhnNO] = useState(0);
+ //  const [address, setAddress] = useState("");
+ const [formData, setFormData] = useState({});
  const [newUser, setNewUser] = useState(false);
 
  const handleSignIN = async (e) => {
@@ -49,32 +51,85 @@ function Profile() {
   }
  };
 
+ const handleChange = (event) => {
+  setFormData({
+   ...formData,
+   [event.target.name]: event.target.value,
+  });
+ };
+
  const handleSubmit = async (e) => {
   e.preventDefault();
 
+  console.log("resp from DB 1 : ", formData);
+
   // add user data to users db in firestore
-  const dbResp = await addUser2DB("users", user.uid, {
-   user_name: name,
-   Phone_No: phnNo,
-   Address: address,
-  });
-  console.log("resp from DB : ", dbResp);
-  router.replace("/");
+  //   const dbResp = await addUser2DB("users", user.uid, {
+  //    user_name: name,
+  //    Phone_No: phnNo,
+  //    Address: address,
+  //   });
+  //   console.log("resp from DB : ", dbResp);
+  //   router.replace("/");
  };
 
  return (
   <div className={profileStyles.main}>
    <h2> Profile page </h2>
    {newUser && (
-    <form onSubmit={handleSubmit}>
-     <label>Enter Name : </label>
-     <input type="text" onChange={(e) => setName(e.target.value)} />
-     <label>Enter Phone No : </label>
-     <input type="number" onChange={(e) => setPhnNO(e.target.value)} />
-     <label>Enter Address : </label>
-     <input type="text" onChange={(e) => setAddress(e.target.value)} />
-     <Button type="submit">Submit</Button>
+    <form className={profileStyles.form} onSubmit={handleSubmit}>
+     <label className={profileStyles.formLabel} htmlFor="name">
+      Name:
+     </label>
+     <input
+      className={profileStyles.formInput}
+      type="text"
+      id="name"
+      name="name"
+      onChange={handleChange}
+      value={formData.name || ""}
+      required
+     />
+
+     <label className={profileStyles.formLabel} htmlFor="email">
+      Phone No:
+     </label>
+     <input
+      className={profileStyles.formInput}
+      type="number"
+      id="phnNo"
+      name="phnNo"
+      onChange={handleChange}
+      value={formData.phnNo || undefined}
+      required
+     />
+
+     <label className={profileStyles.formLabel} htmlFor="email">
+      Address:
+     </label>
+     <input
+      className={profileStyles.formInput}
+      type="text"
+      id="address"
+      name="address"
+      onChange={handleChange}
+      value={formData.address || ""}
+      required
+     />
+
+     <button className={profileStyles.formButton} type="submit">
+      Submit
+     </button>
     </form>
+    // <form onSubmit={handleSubmit}>
+    //  <label>Enter Name : </label>
+    //  <input type="text" onChange={(e) => setName(e.target.value)} />
+    //  <label>Enter Phone No : </label>
+    //  <input type="number" onChange={(e) => setPhnNO(e.target.value)} />
+    //  <label>Enter Address : </label>
+    //  <input type="text" onChange={(e) => setAddress(e.target.value)} />
+    //  <button type="submit">Submit</button>
+    // </form>
    )}
    {!newUser && (
     <GoogleButton
@@ -83,6 +138,9 @@ function Profile() {
      onClick={handleSignIN}
     />
    )}
+   <Link href="/">
+    <h4>Cancel</h4>
+   </Link>
   </div>
  );
 }
