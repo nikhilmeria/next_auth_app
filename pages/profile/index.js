@@ -8,7 +8,7 @@ import sign_in_google from "../../components/auth/sign_google";
 import addUser2DB from "../../components/db/userData";
 import {useAuthContext} from "../../context/authContext";
 import profileStyles from "../../styles/Profile.module.css";
-import Link from "next/link";
+
 
 const db = getFirestore(firebase_app);
 
@@ -71,6 +71,15 @@ function Profile() {
   //   });
   //   console.log("resp from DB : ", dbResp);
   //   router.replace("/");
+ };
+
+ const delUsrAcc = async () => {
+  if (user) {
+   await user.delete(); // 1
+   router.replace("/");
+  } else {
+   router.replace("/");
+  }
  };
 
  return (
@@ -138,11 +147,13 @@ function Profile() {
      onClick={handleSignIN}
     />
    )}
-   <Link href="/">
-    <h4>Cancel</h4>
-   </Link>
+   <h4 onClick={delUsrAcc}>Cancel</h4>
   </div>
  );
 }
 
 export default Profile;
+
+
+//1. I am deleting a newly created user from firebase auth,
+//   if other details are not entered and the user cancels from the page.
