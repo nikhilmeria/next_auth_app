@@ -11,7 +11,7 @@ function About() {
     </div>
     <h2>Shoorvir - About US</h2>
     <Link href="/">
-     <h2>Home</h2>
+     <Image src="/images/home.png" alt="home" width={50} height={45}></Image>
     </Link>
    </header>
 
