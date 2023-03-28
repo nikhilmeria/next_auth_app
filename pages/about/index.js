@@ -5,49 +5,24 @@ import aboutStyles from "../../styles/About.module.css";
 function About() {
  return (
   <div className={aboutStyles.main}>
-   <header>
-    <nav className={aboutStyles.navG}>
-     <Image
-      className={aboutStyles.navGImg}
-      src="/images/logo.png"
-      alt="co logo"
-      width={50}
-      height={48}
-     />
-    </nav>
+   <header className={aboutStyles.head}>
+    <div className={aboutStyles.headImg}>
+     <Image src="/images/logo.png" alt="company logo" width={50} height={45} />
+    </div>
+    <h2>Shoorvir - About US</h2>
+    <Link href="/">
+     <h2>Home</h2>
+    </Link>
    </header>
 
    <div className={aboutStyles.img}>
     <Image
-     src="/images/about.webp"
+     src="/images/hindu.jpg"
      layout="fill"
      objectFit="cover"
      alt="image"
     ></Image>
    </div>
-
-   {/* <div className={aboutStyles.section}>
-    <div className={aboutStyles.secChild}>
-     <Image></Image>
-     <h4>Services</h4>
-     <p></p>
-    </div>
-    <div className={aboutStyles.secChild}>
-     <Image></Image>
-     <h4></h4>
-     <p></p>
-    </div>
-    <div className={aboutStyles.secChild}>
-     <Image></Image>
-     <h4></h4>
-     <p></p>
-    </div>
-    <div className={aboutStyles.secChild}>
-     <Image></Image>
-     <h4></h4>
-     <p></p>
-    </div>
-   </div> */}
 
    <div className={aboutStyles.stmt}>
     <h2>A Mission to Make an Impact</h2>
@@ -56,7 +31,15 @@ function About() {
      the financial system. Today, our deep commitment to financial inclusion is
      reflected in our business, community partnerships, philanthropy, and most
      importantly, support for our customers. We are on a mission to change
-     banking for good.
+     banking for good.Capital One was founded on the belief that no one should
+     be locked out of the financial system. Today, our deep commitment to
+     financial inclusion is reflected in our business, community partnerships,
+     philanthropy, and most importantly, support for our customers. We are on a
+     mission to change banking for good.Capital One was founded on the belief
+     that no one should be locked out of the financial system. Today, our deep
+     commitment to financial inclusion is reflected in our business, community
+     partnerships, philanthropy, and most importantly, support for our
+     customers. We are on a mission to change banking for good.
     </p>
    </div>
 
