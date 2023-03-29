@@ -38,10 +38,10 @@ function Service(props) {
    const response = await fetch("/api/service", {
     method: "POST",
     body: JSON.stringify({
-     nm: myName ? myName : props.user_name, //1
-     ph: myPhn ? myPhn : props.Phone_No,
+     nm: myName ? myName : props.name, //1
+     ph: myPhn ? myPhn : props.phone_no,
      myServ,
-     adr: myAdd ? myAdd : props.Address,
+     adr: myAdd ? myAdd : props.address,
      user_id: user.uid,
     }),
     headers: {"Content-Type": "application/json"},
@@ -68,7 +68,7 @@ function Service(props) {
        <div className={serviceStyles.subtitle}>How can we help you?</div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic1}>
         <input
-         defaultValue={props.user_name}
+         defaultValue={props.name}
          id="fullname"
          className={serviceStyles.input}
          type="text"
@@ -83,7 +83,7 @@ function Service(props) {
        </div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
         <input
-         defaultValue={props.Phone_No}
+         defaultValue={props.phone_no}
          id="phnNo"
          className={serviceStyles.input}
          type="tel"
@@ -98,7 +98,7 @@ function Service(props) {
        </div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
         <input
-         defaultValue={props.Address}
+         defaultValue={props.address}
          id="add"
          className={serviceStyles.input}
          type="text"
@@ -155,6 +155,7 @@ function Service(props) {
 
 export default Service;
 
+// Server Side
 export async function getServerSideProps(context) {
  console.log("ID in servData : ", context.query.uid);
 
@@ -164,13 +165,13 @@ export async function getServerSideProps(context) {
 
   if (docSnap.exists()) {
    console.log("Document data 1 :", docSnap.data());
-   const {user_name, Address, Phone_No} = docSnap.data();
-   console.log("Document data 2 : ", user_name);
+   const {name, address, phone_no} = docSnap.data();
+   console.log("Document data 2 : ", name);
    return {
     props: {
-     Address,
-     user_name,
-     Phone_No,
+     address,
+     name,
+     phone_no,
     },
    };
   } else {
@@ -178,9 +179,9 @@ export async function getServerSideProps(context) {
    console.log("No such document!");
    return {
     props: {
-     Address: "",
-     user_name: "",
-     Phone_No: "",
+     address: "",
+     aname: "",
+     phone_no: "",
     },
    };
   }
@@ -189,7 +190,6 @@ export async function getServerSideProps(context) {
    props: {},
   };
  }
-
 }
 
 //note on using toast- no styling to be provided in styles file. 'toast' method used above will provide the necessary

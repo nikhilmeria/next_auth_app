@@ -6,7 +6,6 @@ import {ToastContainer, toast} from "react-toastify";
 
 import firebase_app from "../../firebase_config";
 import sign_in_google from "../../components/auth/sign_google";
-import addUser2DB from "../../components/db/userData";
 import {useAuthContext} from "../../context/authContext";
 import profileStyles from "../../styles/Profile.module.css";
 
@@ -84,12 +83,6 @@ function Profile() {
    console.log("resp from user DB in profile page : ", response);
    router.replace("/");
   }
-
-  //   const dbResp = await addUser2DB("users", user.uid, {
-  //    user_name: formData.name,
-  //    Phone_No: formData.phnNo,
-  //    Address: formData.address,
-  //   });
  };
 
  // delete user auth acc if other details nt provided during registeration
