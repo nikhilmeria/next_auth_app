@@ -97,11 +97,11 @@ function Profile() {
 
  return (
   <div className={profileStyles.main}>
-   <h2> Profile page </h2>
+   <h2> Login / Register </h2>
    {newUser && (
     <form className={profileStyles.form} onSubmit={handleSubmit}>
      <label className={profileStyles.formLabel} htmlFor="name">
-      Name:
+      Name
      </label>
      <input
       className={profileStyles.formInput}
@@ -114,7 +114,7 @@ function Profile() {
      />
 
      <label className={profileStyles.formLabel} htmlFor="phnNo">
-      Phone No:
+      Phone No
      </label>
      <input
       className={profileStyles.formInput}
@@ -122,12 +122,12 @@ function Profile() {
       id="phnNo"
       name="phnNo"
       onChange={handleChange}
-      value={formData.phnNo || undefined}
+      value={formData.phnNo}
       required
      />
 
      <label className={profileStyles.formLabel} htmlFor="address">
-      Address:
+      Address
      </label>
      <input
       className={profileStyles.formInput}
@@ -151,7 +151,7 @@ function Profile() {
      onClick={handleSignIN}
     />
    )}
-   <h4 onClick={delUsrAcc}>Cancel</h4>
+   <h3 onClick={delUsrAcc}>Cancel</h3>
    <ToastContainer
     autoClose={1000}
     position="top-right"
@@ -160,6 +160,7 @@ function Profile() {
     pauseOnHover={true}
     hideProgressBar={false}
    />
+   {!newUser && <p>शूरवीर, नई दिल्ली. &copy; २०२३</p>}
   </div>
  );
 }

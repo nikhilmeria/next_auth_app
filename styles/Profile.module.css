@@ -2,12 +2,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
     background-color: rgb(255, 247, 160);
     border: 2px solid black;
     max-width: 30em;
     min-height: 500px;
     margin: auto;
     margin-top: 5%;
+    border-radius: 40px;
+}
+/*Mobile View */
+@media (max-width:420px) {
+  .main{
+    margin-top: 22vh;
+  }
 }
 
 .main h2{
@@ -27,12 +35,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 90%;
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  border: 2px solid #ccc;
-  border-radius: 5px;
+  border: 2px solid #2d1919;
+  border-radius: 20px;
 }
 
 .formLabel {
@@ -61,4 +69,34 @@
 
 .formButton:hover {
   background-color: #005faa;
+}
+
+.main p{
+  position: absolute;
+  bottom: 0;
+  left: 10em;
+  line-height: 33px;
+  border-bottom: 2px solid black;
+}
+/*Mobile View */
+@media (max-width:420px) {
+  .main p{
+    position: absolute;
+    bottom: 0;
+    left: 5em;
+    font-size: larger;
+    font-weight: bold;
+    line-height: 33px;
+    border-bottom: 2px solid black;
+  }
+}
+
+.main h3 {
+  cursor: pointer;
+}
+/*Mobile View */
+@media (max-width:420px) {
+  .main h3 {
+    font-size: larger;
+  }
 }
