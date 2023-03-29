@@ -40,9 +40,7 @@
         outline: none;
         border: 1px solid #095484;
       }
-      .name input {
-        margin-bottom: 10px;
-      }
+      
       .testbox select {
         padding: 7px 0;
         border-radius: 3px;
@@ -55,34 +53,18 @@
       .testbox select table {
         width: 100%;
       }
-      .dayVisited .timeVisited {
+      .dayVisited  {
         position: relative;
       }
-      .dayVisited input .timeVisited input {
-        width: calc(100% - 12px);
+      .dayVisited input  {
+        max-width: 150px;
         background: #e6eef7;
       }
+     
       .testbox input[type="date"]::-webkit-inner-spin-button {
         display: none;
       }
-      .testbox input[type="time"]::-webkit-inner-spin-button {
-        margin: 2px 22px 0 0;
-      }
-      .dayVisited i .timeVisited i input[type="date"]::-webkit-calendar-picker-indicator {
-        position: absolute;
-        top: 8px;
-        font-size: 20px;
-      }
-      .dayVisited i .timeVisited i {
-        right: 5px;
-        z-index: 1;
-        color: #a9a9a9;
-      }
-      .testbox [type="date"]::-webkit-calendar-picker-indicator {
-        right: 0;
-        z-index: 2;
-        opacity: 0;
-      }
+      
       .questionAnswer label {
         display: block;
         padding: 0 20px 10px 0;
@@ -112,6 +94,9 @@
         margin-top: 20px;
         text-align: center;
       }
+      .btnCancel{
+        margin-left: 44%;
+      }
       .testbox button {
         width: 150px;
         padding: 10px;
@@ -127,6 +112,8 @@
       .testbox button:hover {
         background-color: #0666a3;
       }
+     
+      /* Mobile Screen */
       @media (min-width: 568px) {
       .name {
         display: flex;
@@ -138,5 +125,11 @@
       }
       .testbox th td {
         word-break: keep-all;
+      }
+    }
+
+    @media (max-width: 420px) {
+        .btnCancel{
+        margin-left: 30%;
       }
     }
