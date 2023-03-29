@@ -24,7 +24,12 @@ function Feedback() {
     </h4>
 
     <select>
-     <option class="disabled" value="location" disabled selected>
+     <option
+      className={feedbkStyles.disabled}
+      value="location"
+      disabled
+      selected
+     >
       Please Select
      </option>
      <option value="1">Home</option>

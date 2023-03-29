@@ -2,6 +2,7 @@ import {useState} from "react";
 import {useRouter} from "next/router";
 import {getFirestore, doc, getDoc} from "firebase/firestore";
 import GoogleButton from "react-google-button";
+import {ToastContainer, toast} from "react-toastify";
 
 import firebase_app from "../../firebase_config";
 import sign_in_google from "../../components/auth/sign_google";
@@ -27,6 +28,7 @@ function Profile() {
   console.log("back from component");
   if (error) {
    return console.log(error);
+   // display error message & ask to try again.
   }
   // else successful
   else {
@@ -58,19 +60,39 @@ function Profile() {
  const handleSubmit = async (e) => {
   e.preventDefault();
 
-  console.log("resp from DB 1 : ", formData);
+  let response;
 
-  // add user data to 'users' db in firestore
-  const dbResp = await addUser2DB("users", user.uid, {
-   user_name: formData.name,
-   Phone_No: formData.phnNo,
-   Address: formData.address,
-  });
-  console.log("resp from DB : ", dbResp);
-  router.replace("/");
+  // add user data to 'users' db in firestore via API
+  try {
+   response = await fetch("/api/userDB", {
+    method: "POST",
+    body: JSON.stringify({
+     nm: formData.name,
+     ph: formData.phnNo,
+     adr: formData.address,
+     user_id: user.uid,
+    }),
+    headers: {"Content-Type": "application/json"},
+   });
+   const {data} = await response.json();
+
+   console.log("result in profile page : ", data);
+  } catch (error) {
+   console.error(error);
+   toast.error("Something went wrong, try again !");
+  } finally {
+   console.log("resp from user DB in profile page : ", response);
+   router.replace("/");
+  }
+
+  //   const dbResp = await addUser2DB("users", user.uid, {
+  //    user_name: formData.name,
+  //    Phone_No: formData.phnNo,
+  //    Address: formData.address,
+  //   });
  };
 
- // delete user auth acc if other details nt provided
+ // delete user auth acc if other details nt provided during registeration
  const delUsrAcc = async () => {
   if (user) {
    await user.delete(); // 1
@@ -137,6 +159,14 @@ function Profile() {
     />
    )}
    <h4 onClick={delUsrAcc}>Cancel</h4>
+   <ToastContainer
+    autoClose={1000}
+    position="top-right"
+    theme="colored"
+    closeOnClick={true}
+    pauseOnHover={true}
+    hideProgressBar={false}
+   />
   </div>
  );
 }

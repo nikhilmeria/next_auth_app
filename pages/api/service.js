@@ -3,7 +3,7 @@ import {getFirestore, addDoc, Timestamp, collection} from "firebase/firestore";
 
 const db = getFirestore(firebase_app);
 
-export default async function formHandler(req, res) {
+export default async function serviceHandler(req, res) {
  const name = req.body.nm;
  const no = req.body.ph;
  const serv = req.body.myServ;
@@ -25,10 +25,6 @@ export default async function formHandler(req, res) {
   } catch (err) {
    console.error("err in form api = ", err);
   }
-  //   console.log("body1: ", req.body.name);
-  //   console.log("body2: ", req.body.no);
-  //   console.log("body3: ", req.body.serv);
-  //   console.log("body3: ", req.body.address);
 
   res.status(201).json({data: "Form processing by api"});
  }

@@ -1,6 +1,8 @@
 import firebase_app from "../../firebase_config";
 import {getFirestore, doc, setDoc} from "firebase/firestore";
 
+//THIS FILE IS NOT REQD
+
 const db = getFirestore(firebase_app);
 
 export default async function addUsrData(collection, id, data) {
