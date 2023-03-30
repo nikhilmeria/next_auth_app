@@ -16,7 +16,7 @@ function Service(props) {
  const {user} = useAuthContext();
  const [myName, setMyName] = useState(null);
  const [myPhn, setMyPhn] = useState(null);
- const [myServ, setMyServ] = useState(null);
+ const [myServ, setMyServ] = useState("");
  const [myAdd, setMyAdd] = useState(null);
 
  console.log("Props in services : ", props);
@@ -63,7 +63,7 @@ function Service(props) {
     <>
      <div className={serviceStyles.main}>
       <h3>Shoorvir.com</h3>
-      <div className={serviceStyles.form}>
+      <form className={serviceStyles.form} onSubmit={handleSubmit}>
        <div className={serviceStyles.title}>नमस्ते</div>
        <div className={serviceStyles.subtitle}>How can we help you?</div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic1}>
@@ -113,7 +113,8 @@ function Service(props) {
        </div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
         <input
-         id="serv"
+         id="myServ"
+         name="myServ"
          className={serviceStyles.input}
          value={myServ}
          type="text"
@@ -122,15 +123,11 @@ function Service(props) {
          onChange={(e) => setMyServ(e.target.value)}
         />
         <div className={serviceStyles.cut + " " + serviceStyles.cutShort}></div>
-        <label htmlFor="serv" className={serviceStyles.placeholder}>
+        <label htmlFor="myServ" className={serviceStyles.placeholder}>
          Service required<span>*</span>
         </label>
        </div>
-       <button
-        type="text"
-        className={serviceStyles.submit}
-        onClick={handleSubmit}
-       >
+       <button type="submit" className={serviceStyles.submit}>
         Submit
        </button>
        <ToastContainer
@@ -146,7 +143,7 @@ function Service(props) {
          <h5>Home</h5>
         </div>
        </Link>
-      </div>
+      </form>
      </div>
     </>
    )}
