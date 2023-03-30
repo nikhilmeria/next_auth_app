@@ -45,7 +45,7 @@ function About() {
     <div className={aboutStyles.cardBox}>
      <div className={aboutStyles.cardImg}>
       <Image
-       src="/images/co.webp"
+       src="/images/commit.png"
        alt="cardImg"
        width={150}
        height={150}
@@ -83,7 +83,7 @@ function About() {
     <div className={aboutStyles.cardBox}>
      <div className={aboutStyles.cardImg}>
       <Image
-       src="/images/commit.png"
+       src="/images/co.webp"
        alt="cardImg"
        width={150}
        height={150}

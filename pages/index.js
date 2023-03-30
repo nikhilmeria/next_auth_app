@@ -1,7 +1,5 @@
 import {useState, useEffect} from "react";
 import Head from "next/head";
-import {useRouter} from "next/router";
-
 import Image from "next/image";
 import Script from "next/script";
 import Link from "next/link";
@@ -124,10 +122,10 @@ export default function Home() {
     <div className={styles.headerText}>
      <h1>What's Shoorvir ?</h1>
      <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum dolorem
-      maxime natus ad odionesciunt, nostrum impedit unde consequatur quo est
-      aliquid magnam repellat, quaerat, deserunt eveniet nobis perspiciatis rum
-      impedit unde consectetur adipisicing.
+      Shoorvir is a social service initiative for the Hindu community at large.
+      We strive to provide unemployed youth with an opportunity to provide
+      services to households as per their skillsets, as well as find suitable
+      jobs. Our services are totally FREE of charge.
      </p>
      <button className={styles.button + " " + styles.button1}>
       <a href="/about">Read More</a>

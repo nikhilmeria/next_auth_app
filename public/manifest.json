@@ -1,33 +1,33 @@
 {
-  "id": "/",
-  "theme_color": "#1fd4c0",
-  "background_color": "#259409",
-  "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
-  "name": "Advice app",
-  "short_name": "Advice App",
-  "description": "A random advice generator",
-  "icons": [
-    {
-      "src": "/icon-176x176.png",
-      "sizes": "176x176",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-256x256.png",
-      "sizes": "256x256",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-388x388.png",
-      "sizes": "388x388",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-465x465.png",
-      "sizes": "465x465",
-      "type": "image/png"
-    }
-  ]
+ "id": "/",
+ "theme_color": "#43f0ea",
+ "background_color": "#f7ce45",
+ "display": "standalone",
+ "scope": "/",
+ "start_url": "/",
+ "name": "Shoorvir.com",
+ "short_name": "Shoorvir",
+ "description": "Be a part of Hindu ecosystem",
+ "icons": [
+  {
+   "src": "/icon-176x176.png",
+   "sizes": "176x176",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-256x256.png",
+   "sizes": "256x256",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-388x388.png",
+   "sizes": "388x388",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-465x465.png",
+   "sizes": "465x465",
+   "type": "image/png"
+  }
+ ]
 }
