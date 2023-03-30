@@ -14,7 +14,7 @@
 /*Mobile View */
 @media (max-width:420px) {
   .main{
-    margin-top: 22vh;
+    margin: 22vh 5vw;
   }
 }
 

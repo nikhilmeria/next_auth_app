@@ -26,24 +26,29 @@ function Profile() {
   const {resp, error} = await sign_in_google();
   console.log("back from component");
   if (error) {
+   toast.error("Something went wrong, try again !");
    return console.log(error);
-   // display error message & ask to try again.
   }
   // else successful
   else {
-   console.log(resp.user.uid);
+   try {
+    console.log(resp.user.uid);
 
-   docRef = doc(db, "users", resp.user.uid);
-   const docSnap = await getDoc(docRef);
-   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
-    router.replace({
-     pathname: "/",
-    });
-   } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
-    setNewUser(true);
+    docRef = doc(db, "users", resp.user.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+     console.log("Document data:", docSnap.data());
+     router.replace({
+      pathname: "/",
+     });
+    } else {
+     // doc.data() will be undefined in this case
+     console.log("No such document!");
+     setNewUser(true);
+    }
+   } catch (error) {
+    toast.error("Something went wrong, try again !");
+    return console.log(error);
    }
   }
  };
@@ -77,8 +82,8 @@ function Profile() {
 
    console.log("result in profile page : ", data);
   } catch (error) {
-   console.error(error);
    toast.error("Something went wrong, try again !");
+   return console.log(error);
   } finally {
    console.log("resp from user DB in profile page : ", response);
    router.replace("/");
