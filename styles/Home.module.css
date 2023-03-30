@@ -473,3 +473,23 @@
     display: none;
   }
 }
+
+/* button whatsApp */
+.fixedButton{
+    position: fixed;
+    bottom: 0;
+    right: 0; 
+    padding: 32px;
+}
+.fixedButton1{
+    position: fixed;
+    bottom: 40px;
+    right: 0; 
+    padding: 32px;
+}
+/* button whatsApp - Mobile*/
+@media (max-width:420px) {
+  .fixedButton{
+    position: sticky;
+  }
+}

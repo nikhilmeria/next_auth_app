@@ -9,9 +9,9 @@ function About() {
     <div className={aboutStyles.headImg}>
      <Image src="/images/logo.png" alt="company logo" width={50} height={45} />
     </div>
-    <h2>Shoorvir - About US</h2>
+    <h2>About US</h2>
     <Link href="/">
-     <Image src="/images/home.png" alt="home" width={50} height={45}></Image>
+     <Image src="/images/home1.png" alt="home" width={50} height={45}></Image>
     </Link>
    </header>
 

@@ -128,7 +128,11 @@ export default function Home() {
       jobs. Our services are totally FREE of charge.
      </p>
      <button className={styles.button + " " + styles.button1}>
-      <a href="/about">Read More</a>
+      <span>
+       <a href="/about">Read More</a>
+       <br />
+       <a href="/about">Read More</a>
+      </span>
      </button>
     </div>
    </section>
@@ -216,6 +220,13 @@ export default function Home() {
     <div className={styles.footCard}>
      <h3>e-mail : bhartiya@shoorvir.com</h3>
      <h3>Mobile : 9458758638</h3>
+     <Link
+      href="https://wa.me/+919458758638"
+      target="_blank"
+      className={showDiv ? styles.fixedButton1 : styles.fixedButton}
+     >
+      <Image src="/images/whatsapp.png" alt="whatsApp icon" fill></Image>
+     </Link>
      <h2>Contact Us</h2>
     </div>
    </footer>
