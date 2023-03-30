@@ -16,9 +16,9 @@ export default async function signInGoogle() {
   resp = await signInWithPopup(auth, provider);
  } catch (e) {
   error = e;
-  console.error("Signup fn error : ", error);
+  //console.error("Signup fn error : ", error);
  } finally {
-  console.log("resp from google : ", resp);
+  //console.log("resp from google : ", resp);
   return {resp, error};
  }
 }

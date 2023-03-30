@@ -9,7 +9,7 @@ export const AuthContext = createContext(null);
 export const useAuthContext = () => useContext(AuthContext);
 
 function AuthContextProvider({children}) {
- console.log("Inside authContext file");
+ //console.log("Inside authContext file");
  const [user, setUser] = useState();
  const [err, setErr] = useState();
 
