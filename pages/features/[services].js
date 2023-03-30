@@ -27,12 +27,10 @@ function Service(props) {
 
  const handleSubmit = async (e) => {
   e.preventDefault();
-  console.log(user.uid);
-  console.log("name in services : ", myName);
-  console.log("address in services : ", myAdd);
-  console.log("phone in services : ", myPhn);
-
-  // validate data here - pending
+  //   console.log(user.uid);
+  //   console.log("name in services : ", myName);
+  //   console.log("address in services : ", myAdd);
+  //   console.log("phone in services : ", myPhn);
 
   try {
    const response = await fetch("/api/service", {
@@ -48,10 +46,10 @@ function Service(props) {
    });
    const {data} = await response.json();
 
-   console.log("result in service page : ", data);
+   //console.log("result in service page : ", data);
   } catch (error) {
-   console.error(error);
    toast.error("Something went wrong, try again !");
+   return; //console.error(error);
   } finally {
    router.replace("/");
   }
@@ -155,16 +153,16 @@ export default Service;
 
 // Server Side
 export async function getServerSideProps(context) {
- console.log("ID in servData : ", context.query.uid);
+ //console.log("ID in servData : ", context.query.uid);
 
  if (context.query.uid) {
   const docRef = doc(db, "users", context.query.uid);
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-   console.log("Document data 1 :", docSnap.data());
+   //console.log("Document data 1 :", docSnap.data());
    const {name, address, phone_no} = docSnap.data();
-   console.log("Document data 2 : ", name);
+   //console.log("Document data 2 : ", name);
    return {
     props: {
      address,
@@ -174,7 +172,7 @@ export async function getServerSideProps(context) {
    };
   } else {
    // doc.data() will be undefined in this case
-   console.log("No such document!");
+   //console.log("No such document!");
    return {
     props: {
      address: "",
