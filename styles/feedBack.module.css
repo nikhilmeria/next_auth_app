@@ -95,7 +95,7 @@
         text-align: center;
       }
       .btnCancel{
-        margin-left: 44%;
+        margin-left: 44.5%;
       }
       .testbox button {
         width: 150px;
@@ -113,22 +113,8 @@
         background-color: #0666a3;
       }
      
-      /* Mobile Screen */
-      @media (min-width: 568px) {
-      .name {
-        display: flex;
-        justify-content: space-between;
-      }
-      .name input {
-        width: 47%;
-        margin-bottom: 0;
-      }
-      .testbox th td {
-        word-break: keep-all;
-      }
-    }
-
-    @media (max-width: 420px) {
+      /* Mobile View */
+      @media (max-width: 420px) {
         .btnCancel{
         margin-left: 30%;
       }
