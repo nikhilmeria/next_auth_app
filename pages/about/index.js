@@ -27,19 +27,17 @@ function About() {
    <div className={aboutStyles.stmt}>
     <h2>A Mission to Make an Impact</h2>
     <p>
-     Capital One was founded on the belief that no one should be locked out of
-     the financial system. Today, our deep commitment to financial inclusion is
-     reflected in our business, community partnerships, philanthropy, and most
-     importantly, support for our customers. We are on a mission to change
-     banking for good.Capital One was founded on the belief that no one should
-     be locked out of the financial system. Today, our deep commitment to
-     financial inclusion is reflected in our business, community partnerships,
-     philanthropy, and most importantly, support for our customers. We are on a
-     mission to change banking for good.Capital One was founded on the belief
-     that no one should be locked out of the financial system. Today, our deep
-     commitment to financial inclusion is reflected in our business, community
-     partnerships, philanthropy, and most importantly, support for our
-     customers. We are on a mission to change banking for good.
+     Shoorvir is a company that provides regular household services to
+     customers, such as cleaning, cooking, laundry, grocery shopping, and other
+     household tasks. We offer convenience and ease to busy individuals who are
+     unable to take care of their daily chores due to their hectic schedule or
+     physical limitations. Our service providers can be hired on a daily,
+     weekly, or monthly basis, depending on the needs of the customer. They are
+     trained professionals who offer customized services that meet the specific
+     needs of each client. They are reliable, trustworthy, and committed to
+     providing high-quality services to ensure that their customers' homes are
+     clean and organized, and their daily needs are taken care of. We intend to
+     save customers time and energy, making their lives easier and stress-free.
     </p>
    </div>
 
@@ -55,11 +53,10 @@ function About() {
       />
      </div>
      <div className={aboutStyles.cardContent}>
-      <h2>Company</h2>
+      <h2>Services</h2>
       <p>
-       Capital One was founded on the belief that no one should be locked out of
-       the financial system. Today, our deep commitment to financial inclusion
-       is
+       Experience convenience and ease with our daily household chores service
+       for a stress-free life. Book now and make your life simpler!
       </p>
      </div>
     </div>
@@ -75,11 +72,10 @@ function About() {
       />
      </div>
      <div className={aboutStyles.cardContent}>
-      <h2>Carrer</h2>
+      <h2>Job</h2>
       <p>
-       Capital One was founded on the belief that no one should be locked out of
-       the financial system. Today, our deep commitment to financial inclusion
-       is
+       Shoorvir helps helps to find your dream job. We connect you with local
+       employers and opportunities that fit your skills and experience.
       </p>
      </div>
     </div>
@@ -95,11 +91,10 @@ function About() {
       />
      </div>
      <div className={aboutStyles.cardContent}>
-      <h2>Services</h2>
+      <h2>Staff</h2>
       <p>
-       Capital One was founded on the belief that no one should be locked out of
-       the financial system. Today, our deep commitment to financial inclusion
-       is
+       Reliable staff, customized solutions. Our service offers professional
+       employees for your business needs. Contact us today to learn more.
       </p>
      </div>
     </div>
