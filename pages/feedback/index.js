@@ -20,7 +20,7 @@ function Feedback() {
      you!
     </p>
     <h4>
-     Service Location<span>*</span>
+     1. Service Location<span>*</span>
     </h4>
 
     <select>
@@ -38,13 +38,13 @@ function Feedback() {
     </select>
 
     <h4>
-     Day Visited<span>*</span>
+     2. Day Visited<span>*</span>
     </h4>
     <div className={feedbkStyles.dayVisited}>
      <input type="date" name="dayvisited" required />
     </div>
 
-    <h4>Rating on various parameters.</h4>
+    <h4>3. Rating on various parameters.</h4>
     <table>
      <tr>
       <th className={feedbkStyles.firstCol}></th>
@@ -129,7 +129,7 @@ function Feedback() {
       </td>
      </tr>
     </table>
-    <h4>Any comments, questions or suggestions?</h4>
+    <h4>4. Any comments, questions or suggestions?</h4>
     <textarea rows="5"></textarea>
 
     <div className={feedbkStyles.btnBlock}>

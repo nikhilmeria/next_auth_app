@@ -78,7 +78,7 @@ function Service(props) {
         />
         <div className={serviceStyles.cut}></div>
         <label htmlFor="fullname" className={serviceStyles.placeholder}>
-         Full name
+         Full name<span>*</span>
         </label>
        </div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
@@ -93,7 +93,7 @@ function Service(props) {
         />
         <div className={serviceStyles.cut}></div>
         <label htmlFor="phnNo" className={serviceStyles.placeholder}>
-         Phone No
+         Phone No<span>*</span>
         </label>
        </div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
@@ -108,13 +108,14 @@ function Service(props) {
         />
         <div className={serviceStyles.cut}></div>
         <label htmlFor="add" className={serviceStyles.placeholder}>
-         Address
+         Address<span>*</span>
         </label>
        </div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
         <input
          id="serv"
          className={serviceStyles.input}
+         value={myServ}
          type="text"
          placeholder=" "
          required
@@ -122,7 +123,7 @@ function Service(props) {
         />
         <div className={serviceStyles.cut + " " + serviceStyles.cutShort}></div>
         <label htmlFor="serv" className={serviceStyles.placeholder}>
-         Service required
+         Service required<span>*</span>
         </label>
        </div>
        <button

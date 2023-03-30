@@ -47,6 +47,9 @@
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
+.formLabel span{
+  color: red;
+}
 
 .formInput {
   width: 100%;

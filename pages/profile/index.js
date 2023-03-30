@@ -101,7 +101,7 @@ function Profile() {
    {newUser && (
     <form className={profileStyles.form} onSubmit={handleSubmit}>
      <label className={profileStyles.formLabel} htmlFor="name">
-      Name
+      Name<span>*</span>
      </label>
      <input
       className={profileStyles.formInput}
@@ -114,7 +114,7 @@ function Profile() {
      />
 
      <label className={profileStyles.formLabel} htmlFor="phnNo">
-      Phone No
+      Phone No<span>*</span>
      </label>
      <input
       className={profileStyles.formInput}
@@ -127,7 +127,7 @@ function Profile() {
      />
 
      <label className={profileStyles.formLabel} htmlFor="address">
-      Address
+      Address<span>*</span>
      </label>
      <input
       className={profileStyles.formInput}
