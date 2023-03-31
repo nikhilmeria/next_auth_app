@@ -4,7 +4,7 @@ import {getFirestore, doc, setDoc, Timestamp} from "firebase/firestore";
 const db = getFirestore(firebase_app);
 
 export default async function userHandler(req, res) {
- console.log("Inside userHandler fn  userDb api : ");
+ //console.log("Inside userHandler fn  userDb api : ");
  let result;
  const name = req.body.nm;
  const no = req.body.ph;
@@ -13,7 +13,7 @@ export default async function userHandler(req, res) {
 
  if (req.method === "POST") {
   try {
-   console.log("Inside try userDb api : ");
+   //console.log("Inside try userDb api : ");
    result = await setDoc(
     doc(db, "users", userId),
     {
@@ -26,9 +26,9 @@ export default async function userHandler(req, res) {
      merge: true,
     }
    );
-   console.log("Document written to userDB by api: ", result);
+   //console.log("Document written to userDB by api: ", result);
   } catch (e) {
-   console.error("err in userDB api = ", e);
+   //console.error("err in userDB api = ", e);
   }
 
   res.status(201).json({data: "user addded to DB by api"});

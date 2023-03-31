@@ -128,11 +128,7 @@ export default function Home() {
       jobs. Our services are totally FREE of charge.
      </p>
      <button className={styles.button + " " + styles.button1}>
-      <span>
-       <a href="/about">Read More</a>
-       <br />
-       <a href="/about">Read More</a>
-      </span>
+      <a href="/about">Read More</a>
      </button>
     </div>
    </section>

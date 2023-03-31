@@ -21,9 +21,9 @@ export default async function serviceHandler(req, res) {
     date: Timestamp.fromDate(new Date()),
    });
 
-   console.log("Document written with ID: ", docRef.id);
+   //console.log("Document written with ID: ", docRef.id);
   } catch (err) {
-   console.error("err in form api = ", err);
+   //console.error("err in form api = ", err);
   }
 
   res.status(201).json({data: "Form processing by api"});

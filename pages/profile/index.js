@@ -18,15 +18,16 @@ function Profile() {
  const {user} = useAuthContext();
  const [formData, setFormData] = useState({});
  const [newUser, setNewUser] = useState(false);
+ const [isValid, setIsValid] = useState(false);
 
  // fn to signin/register to google acc in firebase auth
- const handleSignIN = async (e) => {
-  e.preventDefault();
+ const handleSignIN = async () => {
+  //e.preventDefault();
 
   const {resp, error} = await sign_in_google();
   //console.log("back from component");
   if (error) {
-   toast.error("Something went wrong, try again !");
+   alert("Something went wrong, try again !");
    return; //console.log(error);
   }
   // else successful
@@ -47,7 +48,7 @@ function Profile() {
      setNewUser(true);
     }
    } catch (error) {
-    toast.error("Something went wrong, try again !");
+    alert("Something went wrong, try again !");
     return; //console.log(error);
    }
   }
@@ -66,35 +67,46 @@ function Profile() {
 
   let response;
 
-  // add user data to 'users' db in firestore via API
-  try {
-   response = await fetch("/api/userDB", {
-    method: "POST",
-    body: JSON.stringify({
-     nm: formData.name,
-     ph: formData.phnNo,
-     adr: formData.address,
-     user_id: user.uid,
-    }),
-    headers: {"Content-Type": "application/json"},
-   });
-   const {data} = await response.json();
+  if (isValid) {
+   // add user data to 'users' db in firestore via API
+   try {
+    response = await fetch("/api/userDB", {
+     method: "POST",
+     body: JSON.stringify({
+      nm: formData.name,
+      ph: formData.phnNo,
+      adr: formData.address,
+      user_id: user.uid,
+     }),
+     headers: {"Content-Type": "application/json"},
+    });
+    const {data} = await response.json();
 
-   //console.log("result in profile page : ", data);
-  } catch (error) {
-   toast.error("Something went wrong, try again !");
-   return; //console.log(error);
-  } finally {
-   //console.log("resp from user DB in profile page : ", response);
-   router.replace("/");
+    //console.log("result in profile page : ", data);
+   } catch (error) {
+    alert("Something went wrong, try again !");
+    return; //console.log(error);
+   } finally {
+    //console.log("resp from user DB in profile page : ", response);
+    router.replace("/");
+   }
+  } else {
+   setIsValid(false);
+   alert("Invalid Mobile Number !!!");
+   return;
   }
  };
 
  // delete user auth acc if other details nt provided during registeration
  const delUsrAcc = async () => {
   if (user) {
-   await user.delete(); // 1
-   router.replace("/");
+   try {
+    await user.delete(); // 1
+    router.replace("/");
+   } catch (error) {
+    //if the user delays in providing other user details than firebase trigeers an err, so we need to sign in again.
+    handleSignIN();
+   }
   } else {
    router.replace("/");
   }
@@ -119,14 +131,19 @@ function Profile() {
      />
 
      <label className={profileStyles.formLabel} htmlFor="phnNo">
-      Phone No<span>*</span>
+      Mobile No<span>*</span>
      </label>
      <input
       className={profileStyles.formInput}
       type="number"
       id="phnNo"
       name="phnNo"
-      onChange={handleChange}
+      onChange={(e) => {
+       handleChange(e);
+       if (e.target.value.toString().length === 10) {
+        setIsValid(true);
+       }
+      }}
       value={formData.phnNo}
       required
      />
