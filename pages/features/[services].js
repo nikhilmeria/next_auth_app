@@ -19,7 +19,7 @@ function Service(props) {
  const [myServ, setMyServ] = useState("");
  const [myAdd, setMyAdd] = useState(null);
 
- console.log("Props in services : ", props);
+ //console.log("Props in services : ", props);
 
  useEffect(() => {
   !user && router.replace("/profile");
@@ -46,12 +46,11 @@ function Service(props) {
    });
    const {data} = await response.json();
 
+   router.replace("/");
    //console.log("result in service page : ", data);
   } catch (error) {
    toast.error("Something went wrong, try again !");
    return; //console.error(error);
-  } finally {
-   router.replace("/");
   }
  };
 

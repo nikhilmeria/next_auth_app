@@ -19,6 +19,7 @@ function Profile() {
  let phoneValue = null;
  const {user} = useAuthContext();
  const [formData, setFormData] = useState({});
+ const [phNo, setPhNo] = useState();
  const [newUser, setNewUser] = useState(false);
 
  // fn to signin/register to google acc in firebase auth
@@ -73,6 +74,7 @@ function Profile() {
   } else {
    phoneInputRef.current.setCustomValidity("");
    //console.log("phone : ", phoneValue);
+   setPhNo(phoneValue);
   }
  };
 
@@ -84,11 +86,12 @@ function Profile() {
 
   // add user data to 'users' db in firestore via API
   try {
+   //console.log("phone value in phNO : ", phNo);
    response = await fetch("/api/userDB", {
     method: "POST",
     body: JSON.stringify({
      nm: formData.name,
-     ph: phoneValue,
+     ph: phNo,
      adr: formData.address,
      user_id: user.uid,
     }),
