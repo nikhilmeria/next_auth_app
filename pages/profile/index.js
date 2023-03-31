@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {useRouter} from "next/router";
 import {getFirestore, doc, getDoc} from "firebase/firestore";
 import GoogleButton from "react-google-button";
@@ -13,12 +13,13 @@ const db = getFirestore(firebase_app);
 
 function Profile() {
  const router = useRouter();
+ const phoneInputRef = useRef(null);
 
  let docRef = null;
+ let phoneValue = null;
  const {user} = useAuthContext();
  const [formData, setFormData] = useState({});
  const [newUser, setNewUser] = useState(false);
- const [isValid, setIsValid] = useState(false);
 
  // fn to signin/register to google acc in firebase auth
  const handleSignIN = async () => {
@@ -61,39 +62,47 @@ function Profile() {
   });
  };
 
+ const handlePhoneChange = (event) => {
+  phoneValue = event.target.value;
+  const regex = /^[6-9]\d{9}$/; // Regular expression for Indian phone numbers
+  //console.log(regex.test(phoneValue));
+  if (!regex.test(phoneValue)) {
+   phoneInputRef.current.setCustomValidity(
+    "Please enter a valid Indian phone number"
+   );
+  } else {
+   phoneInputRef.current.setCustomValidity("");
+   //console.log("phone : ", phoneValue);
+  }
+ };
+
  // if usr signin's to google acc & provides other details than add them to 'users' db
  const handleSubmit = async (e) => {
   e.preventDefault();
 
   let response;
 
-  if (isValid) {
-   // add user data to 'users' db in firestore via API
-   try {
-    response = await fetch("/api/userDB", {
-     method: "POST",
-     body: JSON.stringify({
-      nm: formData.name,
-      ph: formData.phnNo,
-      adr: formData.address,
-      user_id: user.uid,
-     }),
-     headers: {"Content-Type": "application/json"},
-    });
-    const {data} = await response.json();
+  // add user data to 'users' db in firestore via API
+  try {
+   response = await fetch("/api/userDB", {
+    method: "POST",
+    body: JSON.stringify({
+     nm: formData.name,
+     ph: phoneValue,
+     adr: formData.address,
+     user_id: user.uid,
+    }),
+    headers: {"Content-Type": "application/json"},
+   });
+   const {data} = await response.json();
 
-    //console.log("result in profile page : ", data);
-   } catch (error) {
-    alert("Something went wrong, try again !");
-    return; //console.log(error);
-   } finally {
-    //console.log("resp from user DB in profile page : ", response);
-    router.replace("/");
-   }
-  } else {
-   setIsValid(false);
-   alert("Invalid Mobile Number !!!");
-   return;
+   //console.log("result in profile page : ", data);
+  } catch (error) {
+   alert("Something went wrong, try again !");
+   return; //console.log(error);
+  } finally {
+   //console.log("resp from user DB in profile page : ", response);
+   router.replace("/");
   }
  };
 
@@ -130,22 +139,19 @@ function Profile() {
       required
      />
 
-     <label className={profileStyles.formLabel} htmlFor="phnNo">
+     <label className={profileStyles.formLabel} htmlFor="phone">
       Mobile No<span>*</span>
      </label>
      <input
       className={profileStyles.formInput}
-      type="number"
-      id="phnNo"
-      name="phnNo"
-      onChange={(e) => {
-       handleChange(e);
-       if (e.target.value.toString().length === 10) {
-        setIsValid(true);
-       }
-      }}
-      value={formData.phnNo}
+      type="tel"
+      id="phone"
+      name="phone"
+      pattern="[6-9]\d{9}"
+      maxLength="10"
       required
+      onChange={handlePhoneChange}
+      ref={phoneInputRef}
      />
 
      <label className={profileStyles.formLabel} htmlFor="address">
@@ -188,7 +194,6 @@ function Profile() {
 }
 
 export default Profile;
-
 
 //1. I am deleting a newly created user from firebase auth,
 //   if other details are not entered and the user cancels from the page.
