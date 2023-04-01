@@ -51,7 +51,7 @@ function Feedback() {
       <th>Amazing</th>
       <th>Good</th>
       <th>Decent</th>
-      <th>Disappointing</th>
+      <th>Bad</th>
      </tr>
      <tr>
       <td className={feedbkStyles.firstCol}>Behaviour</td>
