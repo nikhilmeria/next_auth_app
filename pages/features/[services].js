@@ -161,25 +161,32 @@ export async function getServerSideProps(context) {
 
  console.log("ID in servData : ", context.query.uid);
 
- try {
-  const userRef = admin.firestore().collection("users").doc(context.query.uid);
-  const userSnapshot = await userRef.get();
-  const userData = userSnapshot.data();
-  console.log("user data in server : ", userData);
+ if (context.query.uid) {
+  try {
+   const userRef = admin.firestore().collection("users").doc(context.query.uid);
+   const userSnapshot = await userRef.get();
+   const userData = userSnapshot.data();
+   console.log("user data in server : ", userData);
 
-  return {
-   props: {
-    phNum: userData.phone_no,
-    ad: userData.address,
-    nm: userData.name,
-   },
-  };
- } catch (error) {
-  console.log("user err in server : ", error);
+   return {
+    props: {
+     phNum: userData.phone_no,
+     ad: userData.address,
+     nm: userData.name,
+    },
+   };
+  } catch (error) {
+   console.log("user err in server : ", error);
+   return {
+    props: {},
+   };
+  }
+ } else {
   return {
    props: {},
   };
  }
+
 }
 
 //note on using toast- no styling to be provided in styles file. 'toast' method used above will provide the necessary
