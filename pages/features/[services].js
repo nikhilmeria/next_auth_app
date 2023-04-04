@@ -5,11 +5,10 @@ import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import serviceStyles from "../../styles/Services.module.css";
 
-import firebase_app from "../../firebase_config";
-import {getFirestore, doc, getDoc} from "firebase/firestore";
 import {useAuthContext} from "../../context/authContext";
+import admin from "firebase-admin";
+import serviceAcc from "../../serviceAcc.json";
 
-const db = getFirestore(firebase_app);
 
 function Service(props) {
  const router = useRouter();
@@ -19,27 +18,28 @@ function Service(props) {
  const [myServ, setMyServ] = useState("");
  const [myAdd, setMyAdd] = useState(null);
 
- //console.log("Props in services : ", props);
+ console.log("Props in services : ", props);
 
  useEffect(() => {
   !user && router.replace("/profile");
  }, []);
 
+
  const handleSubmit = async (e) => {
   e.preventDefault();
-  //   console.log(user.uid);
-  //   console.log("name in services : ", myName);
-  //   console.log("address in services : ", myAdd);
-  //   console.log("phone in services : ", myPhn);
+    console.log(user.uid);
+    console.log("name in services : ", myName);
+    console.log("address in services : ", myAdd);
+    console.log("phone in services : ", myPhn);
 
   try {
    const response = await fetch("/api/service", {
     method: "POST",
     body: JSON.stringify({
-     nm: myName ? myName : props.name, //1
-     ph: myPhn ? myPhn : props.phone_no,
+     nm: myName ? myName : props.nm, //1
+     ph: myPhn ? myPhn : props.phNum,
      myServ,
-     adr: myAdd ? myAdd : props.address,
+     adr: myAdd ? myAdd : props.ad,
      user_id: user.uid,
     }),
     headers: {"Content-Type": "application/json"},
@@ -65,7 +65,7 @@ function Service(props) {
        <div className={serviceStyles.subtitle}>How can we help you?</div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic1}>
         <input
-         defaultValue={props.name}
+         defaultValue={props.nm}
          id="fullname"
          className={serviceStyles.input}
          type="text"
@@ -80,7 +80,7 @@ function Service(props) {
        </div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
         <input
-         defaultValue={props.phone_no}
+         defaultValue={props.phNum}
          id="phnNo"
          className={serviceStyles.input}
          type="tel"
@@ -95,7 +95,7 @@ function Service(props) {
        </div>
        <div className={serviceStyles.inputContainer + " " + serviceStyles.ic2}>
         <input
-         defaultValue={props.address}
+         defaultValue={props.ad}
          id="add"
          className={serviceStyles.input}
          type="text"
@@ -152,35 +152,30 @@ export default Service;
 
 // Server Side
 export async function getServerSideProps(context) {
- //console.log("ID in servData : ", context.query.uid);
+ if (!admin.apps.length) {
+  admin.initializeApp({
+   credential: admin.credential.cert(serviceAcc),
+   databaseURL: "https://shoorvir-app.firebaseio.com",
+  });
+ }
 
- if (context.query.uid) {
-  const docRef = doc(db, "users", context.query.uid);
-  const docSnap = await getDoc(docRef);
+ console.log("ID in servData : ", context.query.uid);
 
-  if (docSnap.exists()) {
-   //console.log("Document data 1 :", docSnap.data());
-   const {name, address, phone_no} = docSnap.data();
-   //console.log("Document data 2 : ", name);
-   return {
-    props: {
-     address,
-     name,
-     phone_no,
-    },
-   };
-  } else {
-   // doc.data() will be undefined in this case
-   //console.log("No such document!");
-   return {
-    props: {
-     address: "",
-     aname: "",
-     phone_no: "",
-    },
-   };
-  }
- } else {
+ try {
+  const userRef = admin.firestore().collection("users").doc(context.query.uid);
+  const userSnapshot = await userRef.get();
+  const userData = userSnapshot.data();
+  console.log("user data in server : ", userData);
+
+  return {
+   props: {
+    phNum: userData.phone_no,
+    ad: userData.address,
+    nm: userData.name,
+   },
+  };
+ } catch (error) {
+  console.log("user err in server : ", error);
   return {
    props: {},
   };
@@ -189,3 +184,9 @@ export async function getServerSideProps(context) {
 
 //note on using toast- no styling to be provided in styles file. 'toast' method used above will provide the necessary
 //1. this way data is passed in body bcoz we want to chk if user has changed default data in the form or no.
+ 
+//* To fetch all documents in a collection.
+  //   const snapshot = await admin.firestore().collection("users").doc();
+  //   const data = snapshot.docs.map((doc) => doc.data());
+  //   console.log("user data in server : ", data);
+//* 

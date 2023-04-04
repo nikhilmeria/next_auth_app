@@ -125,7 +125,9 @@ export default function Home() {
       Shoorvir is a social service initiative for the Hindu community at large.
       We strive to provide unemployed youth with an opportunity to provide
       services to households as per their skillsets, as well as find suitable
-      jobs. Our services are totally FREE of charge.
+      jobs for them. We even engage in the domain of connecting prospective
+      employers with suitable candidates. Our services are totally FREE of
+      charge.
      </p>
      <button className={styles.button + " " + styles.button1}>
       <a href="/about">Read More</a>

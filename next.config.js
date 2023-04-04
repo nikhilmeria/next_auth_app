@@ -1,40 +1,39 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const CircularDependencyPlugin = require('circular-dependency-plugin')
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  disable: process.env.NODE_ENV === 'development',
-})
+const CircularDependencyPlugin = require("circular-dependency-plugin");
+const withPWA = require("next-pwa")({
+ dest: "public",
+ disable: process.env.NODE_ENV === "development",
+});
 
-const plugins = []
+const plugins = [];
 
-if (process.env.ANALYZE === 'true') {
-  // only load dependency if env `ANALYZE` was set
-  const withBundleAnalyzer = require('@next/bundle-analyzer')({
-    enabled: true,
-  })
+if (process.env.ANALYZE === "true") {
+ // only load dependency if env `ANALYZE` was set
+ const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: true,
+ });
 
-  plugins.push(withBundleAnalyzer)
+ plugins.push(withBundleAnalyzer);
 }
 
-plugins.push(withPWA)
+plugins.push(withPWA);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  webpack: (config) => {
-    config.plugins.push(
-      new CircularDependencyPlugin({
-        exclude: /a\.js|node_modules/,
-        include: /src/,
-        failOnError: true,
-        allowAsyncCycles: false,
-        cwd: process.cwd(),
-      }),
-    )
+ reactStrictMode: true,
+ webpack: (config) => {
+  config.plugins.push(
+   new CircularDependencyPlugin({
+    exclude: /a\.js|node_modules/,
+    include: /src/,
+    failOnError: true,
+    allowAsyncCycles: false,
+    cwd: process.cwd(),
+   })
+  );
 
-    return config
-  },
-}
+  return config;
+ },
+};
 
-module.exports = () => plugins.reduce((acc, next) => next(acc), nextConfig)
-
+module.exports = () => plugins.reduce((acc, next) => next(acc), nextConfig);
