@@ -20,7 +20,7 @@
 .navG li {
     display: inline;
     list-style: none;
-    padding: 0.8em;
+    padding: 1em;
     text-decoration: none;
     font-weight: bold;
 }
@@ -30,12 +30,22 @@
 }
 .navG a:hover {
     padding: 0.2em;
-    background-color: rgb(235, 241, 246);
+    background-color: rgb(255, 214, 48);
     border-radius: 0.3em;
     color: #57727C;
 }
 .navMenu li a{
   font-size: clamp(1.2rem, 5vw + 1rem, 1.2rem);
+}
+.navLink img{
+    width: 30px;
+    height: 25px;
+    position: absolute;
+    top: 20px;
+    right: 1px;
+}
+.navG a:hover>img{
+  background-color: rgb(255, 214, 48);
 }
 
 /* nav - Mobile*/
@@ -61,6 +71,20 @@
     }
     .navLink{
         margin: 16px 0;
+    }
+    .navLink img{
+      width: 40px;
+      height: 35px;
+      position: absolute;
+      top: 11em;
+      right: 10em;
+    }
+    .navG li {
+      display: inline;
+      list-style: none;
+      padding: 0.8em;
+      text-decoration: none;
+      font-weight: bold;
     }
     .navLink{
         transition: 0.7s ease;

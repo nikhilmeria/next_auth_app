@@ -82,14 +82,19 @@ export default function Home() {
        </Link>
       </li>
       {!user && (
-       <li>
+       <li title="Sign In">
         <Link href="/profile" className={styles.navLink}>
-         Login
+         <Image
+          src="/images/account.png"
+          alt="user"
+          width={72}
+          height={16}
+         ></Image>
         </Link>
        </li>
       )}
       {user && (
-       <li>
+       <li title="Signout">
         <Link
          href=""
          className={styles.navLink}
@@ -98,7 +103,12 @@ export default function Home() {
           auth.signOut();
          }}
         >
-         LogOut
+         <Image
+          src="/images/logout.png"
+          alt="user"
+          width={72}
+          height={16}
+         ></Image>
         </Link>
        </li>
       )}
