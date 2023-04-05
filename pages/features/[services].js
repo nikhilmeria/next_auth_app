@@ -7,8 +7,6 @@ import serviceStyles from "../../styles/Services.module.css";
 
 import {useAuthContext} from "../../context/authContext";
 import admin from "firebase-admin";
-import serviceAcc from "../../serviceAcc.json";
-
 
 function Service(props) {
  const router = useRouter();
@@ -24,13 +22,12 @@ function Service(props) {
   !user && router.replace("/profile");
  }, []);
 
-
  const handleSubmit = async (e) => {
   e.preventDefault();
-    console.log(user.uid);
-    console.log("name in services : ", myName);
-    console.log("address in services : ", myAdd);
-    console.log("phone in services : ", myPhn);
+  console.log(user.uid);
+  console.log("name in services : ", myName);
+  console.log("address in services : ", myAdd);
+  console.log("phone in services : ", myPhn);
 
   try {
    const response = await fetch("/api/service", {
@@ -152,10 +149,15 @@ export default Service;
 
 // Server Side
 export async function getServerSideProps(context) {
+ const serviceAccount = {
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+  privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+ };
+
  if (!admin.apps.length) {
   admin.initializeApp({
-   credential: admin.credential.cert(serviceAcc),
-   databaseURL: "https://shoorvir-app.firebaseio.com",
+   credential: admin.credential.cert(serviceAccount),
   });
  }
 
@@ -186,7 +188,6 @@ export async function getServerSideProps(context) {
    props: {},
   };
  }
-
 }
 
 //note on using toast- no styling to be provided in styles file. 'toast' method used above will provide the necessary
