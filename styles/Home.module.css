@@ -49,7 +49,7 @@
 }
 
 /* nav - Mobile*/
-@media only screen and (min-width: 339px) and (max-width: 460px){
+@media only screen and (min-width: 330px) and (max-width: 460px){
     .bar{
         display: block;
         width: 25px;
@@ -64,7 +64,7 @@
         position: fixed;
         top: -100%;
         gap: 0;
-        width: 100%;
+        min-width: 100%;
         background-color: rgb(255, 214, 48);
         text-align: center; 
         transition: 0.7s;
@@ -76,8 +76,8 @@
       width: 40px;
       height: 35px;
       position: absolute;
-      top: 11em;
-      right: 10em;
+      top: 85%;
+      right: 45%;
     }
     .navG li {
       display: inline;
@@ -115,7 +115,7 @@
 .header{
   background-image: url("../public/images/services.webp");/*use '../', for path*/
   max-width:100%;
-  min-height: 500px;
+  min-height: 600px;
   background-position-x: right;
   background-repeat: no-repeat;
   background-size: contain;
@@ -165,7 +165,7 @@
    color: #FFFFFF;
 }
 /* Header - Mobile */
-@media only screen and (min-width: 339px) and (max-width: 460px) {
+@media only screen and (min-width: 330px) and (max-width: 460px) {
    .header{
     display: flex;
     flex-direction: column;
@@ -175,17 +175,18 @@
   .headerText {
     display: flex;
     flex-direction: column;
-    max-width: 250px;
-    min-height: 500px;
+    max-width: 90%;
+    min-height: 90%;
     position: relative;
-    top: 30vh;
+    top: 20vh;
     left: 5vw;  
+    margin: 1em 2em;
   }
   .headerText h1{
     margin-right: auto;
   }
   .headerText p{
-      font-size: 4.8vw; 
+      font-size: 2.8vw; 
       font-weight: bold;
   }
    .button {
@@ -309,13 +310,13 @@
 }
 
 /* Features- Mobile */
-@media only screen and (min-width: 339px) and (max-width: 460px) {
+@media only screen and (min-width: 330px) and (max-width: 460px) {
    .features{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 18em;
+    margin-top: 2em;
    }
    .card__text h3{
     font-size: 1.2rem;
@@ -363,7 +364,7 @@
 }
 
 /* youtube - mobile View */
-@media only screen and (min-width: 339px) and (max-width: 460px){
+@media only screen and (min-width: 330px) and (max-width: 460px){
   .ytTxt{
     font-size: 3.8vw;
   }
@@ -415,7 +416,7 @@
   }
 
 /* Footer - Mobile */
-@media only screen and (min-width: 339px) and (max-width: 460px) {
+@media only screen and (min-width: 330px) and (max-width: 460px) {
     .foot{
         display: flex;
         flex-direction: column;
