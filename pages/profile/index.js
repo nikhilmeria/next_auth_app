@@ -8,6 +8,7 @@ import firebase_app from "../../firebase_config";
 import sign_in_google from "../../components/auth/sign_google";
 import {useAuthContext} from "../../context/authContext";
 import profileStyles from "../../styles/Profile.module.css";
+import Loading from "../../components/loading";
 
 const db = getFirestore(firebase_app);
 
@@ -21,6 +22,7 @@ function Profile() {
  const [formData, setFormData] = useState({});
  const [phNo, setPhNo] = useState();
  const [newUser, setNewUser] = useState(false);
+ const [isLoading, setIsLoading] = useState(false);
 
  // fn to signin/register to google acc in firebase auth
  const handleSignIN = async () => {
@@ -82,6 +84,8 @@ function Profile() {
  const handleSubmit = async (e) => {
   e.preventDefault();
 
+  setIsLoading(true);
+
   let response;
 
   // add user data to 'users' db in firestore via API
@@ -101,10 +105,12 @@ function Profile() {
 
    //console.log("result in profile page : ", data);
   } catch (error) {
+   setIsLoading(false);
    alert("Something went wrong, try again !");
    return; //console.log(error);
   } finally {
    //console.log("resp from user DB in profile page : ", response);
+   setIsLoading(false);
    router.replace("/");
   }
  };
@@ -192,6 +198,7 @@ function Profile() {
     hideProgressBar={false}
    />
    {!newUser && <p>शूरवीर, नई दिल्ली. &copy; २०२३</p>}
+   {isLoading && <Loading />}
   </div>
  );
 }

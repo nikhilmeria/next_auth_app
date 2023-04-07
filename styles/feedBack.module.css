@@ -95,7 +95,8 @@
         text-align: center;
       }
       .btnCancel{
-        margin-left: 44.5%;
+        display: block;
+        margin: 0 auto;
       }
       .testbox button {
         width: 150px;
@@ -112,10 +113,3 @@
       .testbox button:hover {
         background-color: #0666a3;
       }
-     
-      /* Mobile View */
-      @media (max-width: 420px) {
-        .btnCancel{
-        margin-left: 30%;
-      }
-    }

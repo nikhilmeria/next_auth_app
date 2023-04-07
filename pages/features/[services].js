@@ -3,10 +3,11 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import serviceStyles from "../../styles/Services.module.css";
-
-import {useAuthContext} from "../../context/authContext";
 import admin from "firebase-admin";
+
+import serviceStyles from "../../styles/Services.module.css";
+import {useAuthContext} from "../../context/authContext";
+import Loading from "../../components/loading";
 
 function Service(props) {
  const router = useRouter();
@@ -15,6 +16,7 @@ function Service(props) {
  const [myPhn, setMyPhn] = useState(null);
  const [myServ, setMyServ] = useState("");
  const [myAdd, setMyAdd] = useState(null);
+ const [isLoading, setIsLoading] = useState(false);
 
  console.log("Props in services : ", props);
 
@@ -24,6 +26,9 @@ function Service(props) {
 
  const handleSubmit = async (e) => {
   e.preventDefault();
+
+  setIsLoading(true);
+
   console.log(user.uid);
   console.log("name in services : ", myName);
   console.log("address in services : ", myAdd);
@@ -43,9 +48,30 @@ function Service(props) {
    });
    const {data} = await response.json();
 
+   setIsLoading(false);
    router.replace("/");
-   //console.log("result in service page : ", data);
+
+   //call the email api to send a mail after successfully posting in service DB
+   //  try {
+   //   const response = await fetch("/api/email", {
+   //    method: "POST",
+   //    body: JSON.stringify({
+   //     nm: myName ? myName : props.nm, //1
+   //     ph: myPhn ? myPhn : props.phNum,
+   //     email: user.email,
+   //     message: `${myServ} related service is required...`,
+   //    }),
+   //    headers: {"Content-Type": "application/json"},
+   //   });
+   //   const {data} = await response.json();
+
+   //   router.replace("/");
+   //  } catch (error) {
+   //   console.error("Error sending email : ", error);
+   //   return;
+   //  }
   } catch (error) {
+   setIsLoading(false);
    toast.error("Something went wrong, try again !");
    return; //console.error(error);
   }
@@ -141,6 +167,7 @@ function Service(props) {
      </div>
     </>
    )}
+   {isLoading && <Loading />}
   </>
  );
 }

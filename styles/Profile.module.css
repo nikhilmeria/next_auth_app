@@ -13,7 +13,7 @@
 }
 
 /*Mobile View */
-@media (max-width:420px) {
+@media only screen and (min-width: 330px) and (max-width: 460px) {
   .main{
     margin: 22vh 5vw;
   }
@@ -32,7 +32,7 @@
   margin-top: 25%;
 }
 /*Mobile View - goglBtn */
-@media only screen and (min-width: 339px) and (max-width: 485px) {
+@media only screen and (min-width: 330px) and (max-width: 460px){
   .goglBtn{
    align-self:center;
    margin-top: 35%;
@@ -95,5 +95,3 @@
 .main h3 {
   cursor: pointer;
 }
-
-

@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 
 export default function mailHandler(req, res) {
- const {name, email, message} = req.body;
+ const {nm, email, message, ph} = req.body;
 
  // Send email using nodemailer
  const transporter = nodemailer.createTransport({
@@ -13,18 +13,18 @@ export default function mailHandler(req, res) {
  });
 
  const mailOptions = {
-  from: email,
-  to: "klokroom@gmail.com",
-  subject: `New message from ${name}`,
+  from: "rohitwadkra123456789101@gmail.com",
+  to: email,
+  subject: `New message from ${nm} - ${ph}`,
   text: message,
  };
 
  transporter.sendMail(mailOptions, (error, info) => {
   if (error) {
    console.log(error);
-   res.status(500).send("Error sending message");
+   res.status(500).send("Error sending email  message from server");
   } else {
-   console.log(`Email sent: ${info.response}`);
+   console.log(`Email sent from server : ${info.response}`);
    res.status(200).send("Message sent");
   }
  });
