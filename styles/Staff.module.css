@@ -1,0 +1,20 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* set the height of the container to the viewport height */
+}
+
+.main h3{
+    display: block;
+    margin: 0 auto;
+}
+
+.btn{
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #0077cc;
+    color: white;
+}

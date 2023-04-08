@@ -110,8 +110,11 @@ function Profile() {
    return; //console.log(error);
   } finally {
    //console.log("resp from user DB in profile page : ", response);
-   setIsLoading(false);
-   router.replace("/");
+   setTimeout(() => {
+    setIsLoading(false);
+    router.replace("/");
+   }, 2500);
+   toast.success("SignUp successful !");
   }
  };
 
@@ -190,7 +193,7 @@ function Profile() {
    )}
    <h3 onClick={delUsrAcc}>Cancel</h3>
    <ToastContainer
-    autoClose={1000}
+    autoClose={1500}
     position="top-right"
     theme="colored"
     closeOnClick={true}

@@ -48,8 +48,11 @@ function Service(props) {
    });
    const {data} = await response.json();
 
-   setIsLoading(false);
-   router.replace("/");
+   setTimeout(() => {
+    setIsLoading(false);
+    router.replace("/");
+   }, 2500);
+   toast.success("Service Request placed !");
 
    //call the email api to send a mail after successfully posting in service DB
    //  try {
@@ -151,7 +154,7 @@ function Service(props) {
         Submit
        </button>
        <ToastContainer
-        autoClose={1000}
+        autoClose={1500}
         position="top-right"
         theme="colored"
         closeOnClick={true}

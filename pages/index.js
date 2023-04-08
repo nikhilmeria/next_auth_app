@@ -161,7 +161,7 @@ export default function Home() {
       </div>
      </div>
     </Link>
-    <Link href="">
+    <Link href="/features/job">
      <div className={styles.card + " " + styles.cardFixedWidth}>
       <div className={styles.card__description}>
        <Image src="/images/job.jpg" alt="Job" width={200} height={175} />
@@ -171,7 +171,7 @@ export default function Home() {
       </div>
      </div>
     </Link>
-    <Link href="">
+    <Link href="/features/staff">
      <div className={styles.card + " " + styles.cardFixedWidth}>
       <div className={styles.card__description}>
        <Image src="/images/staff.jpg" alt="Staff" width={200} height={175} />
