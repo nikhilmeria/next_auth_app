@@ -186,25 +186,13 @@ export default function Home() {
    <section className={styles.yt}>
     <div className={styles.ytVidContainer}>
      <div className={styles.ytVid}>
-      <iframe
-       height="280"
-       width="350"
-       src="https://www.youtube.com/embed/QQ8HunsEZXI"
-      ></iframe>
+      <iframe src="https://www.youtube.com/embed/QQ8HunsEZXI"></iframe>
      </div>
      <div className={styles.ytVid}>
-      <iframe
-       height="280"
-       width="350"
-       src="https://www.youtube.com/embed/9BD3V0VDL9Y"
-      ></iframe>
+      <iframe src="https://www.youtube.com/embed/9BD3V0VDL9Y"></iframe>
      </div>
      <div className={styles.ytVid}>
-      <iframe
-       height="280"
-       width="350"
-       src="https://www.youtube.com/embed/9Ml5LiEW80Y  "
-      ></iframe>
+      <iframe src="https://www.youtube.com/embed/9Ml5LiEW80Y  "></iframe>
      </div>
     </div>
     <div className={styles.ytTxt}>
