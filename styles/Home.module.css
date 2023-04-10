@@ -544,22 +544,31 @@
   }
 }
 
-/* button whatsApp */
-.fixedButton{
+
+/*---social-icons---*/
+@media (min-width : 1200px) {
+  .socialIcons {
+    width: 3.5rem;
     position: fixed;
-    bottom: 0;
-    right: 0; 
-    padding: 32px;
-}
-.fixedButton1{
-    position: fixed;
-    bottom: 40px;
-    right: 0; 
-    padding: 32px;
-}
-/* button whatsApp - Mobile*/
-@media (max-width:420px) {
-  .fixedButton{
-    position: sticky;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 1;
   }
+  .socialIcons img {
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 auto 1.5rem;
+    cursor: pointer;
+  }
+}
+
+/* for mobile view */
+.socialIcons img {
+  margin-top: 1em;
+  margin-left: 1em;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
 }
