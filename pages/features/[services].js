@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {useRouter} from "next/router";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -166,6 +167,16 @@ function Service(props) {
          <h5>Home</h5>
         </div>
        </Link>
+       <div className={serviceStyles.socialIcons}>
+        <Link href="https://wa.me/+919458758638" target="_blank">
+         <Image
+          src="/images/whatsapp.png"
+          alt="whatsapp"
+          width={72}
+          height={16}
+         />
+        </Link>
+       </div>
       </form>
      </div>
     </>
