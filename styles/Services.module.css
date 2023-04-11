@@ -6,24 +6,9 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 .main h3{
     display: none;
-}
-@media (max-width:420px) {
-  .main{
-    margin-top: 40px;
-    min-width:100%;
-    position: absolute;
-  }
-  .main h3{
-    display: block;
-    position: relative;
-    top: -65px;
-    background-color: rgb(255, 214, 48);
-    text-align: center;
-    padding: 8px;
-    font-size: clamp(1.4rem, -0.875rem + 8.333vw, 3.5rem);    
-  }
 }
 
 .form {
@@ -32,16 +17,31 @@
   box-sizing: border-box;
   max-height: max-content;
   padding: 20px;
-  width: 320px;
+  max-width: 320px;
   margin: auto;
   margin-top: 3vh;
 }
-@media (max-width:420px) {
- .form{
-    margin-top: 180px;
-    margin-left: 50px;  
+
+@media only screen and (min-width: 300px) and (max-width: 450px) {
+  .main{
+    display: flex;
+    flex-direction: column;
+    background-position: 0 10vh;
+  }
+  .main h3{
+    display: flex; 
+    background-color: rgb(255, 214, 48);
+    text-align: center;
+    padding: 8px;
+    margin: 0 auto;
+    font-size: clamp(1.4rem, -0.875rem + 8.333vw, 3.5rem);    
+  }
+  .form{
+    margin-top: 35vh;
+    max-width: 90vw;
  }
 }
+
 
 .title {
   color: #eee;
