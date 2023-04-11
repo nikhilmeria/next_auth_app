@@ -22,7 +22,12 @@ function Service(props) {
  console.log("Props in services : ", props);
 
  useEffect(() => {
-  !user && router.replace("/profile");
+  console.log("service 0 : ", router.asPath);
+  !user &&
+   router.push({
+    pathname: "/profile",
+    query: router.asPath,
+   });
  }, []);
 
  const handleSubmit = async (e) => {
@@ -53,7 +58,10 @@ function Service(props) {
     setIsLoading(false);
     router.replace("/");
    }, 2500);
-   toast.success("Service Request placed !");
+
+   toast.success("Service Request placed !", {
+    position: toast.POSITION.TOP_RIGHT,
+   });
 
    //call the email api to send a mail after successfully posting in service DB
    //  try {
@@ -76,7 +84,9 @@ function Service(props) {
    //  }
   } catch (error) {
    setIsLoading(false);
-   toast.error("Something went wrong, try again !");
+   toast.error("Something went wrong, try again !", {
+    position: toast.POSITION.TOP_RIGHT,
+   });
    return; //console.error(error);
   }
  };
@@ -156,7 +166,6 @@ function Service(props) {
        </button>
        <ToastContainer
         autoClose={1500}
-        position="top-right"
         theme="colored"
         closeOnClick={true}
         pauseOnHover={true}

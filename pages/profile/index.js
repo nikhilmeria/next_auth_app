@@ -1,8 +1,9 @@
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
 import {getFirestore, doc, getDoc} from "firebase/firestore";
 import GoogleButton from "react-google-button";
 import {ToastContainer, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import firebase_app from "../../firebase_config";
 import sign_in_google from "../../components/auth/sign_google";
@@ -23,6 +24,13 @@ function Profile() {
  const [phNo, setPhNo] = useState();
  const [newUser, setNewUser] = useState(false);
  const [isLoading, setIsLoading] = useState(false);
+ const [previousRoute, setPreviousRoute] = useState();
+
+ useEffect(() => {
+  console.log("route 0 : ", router.asPath);
+  setPreviousRoute(router.asPath);
+  console.log("route 1 : ", previousRoute);
+ });
 
  // fn to signin/register to google acc in firebase auth
  const handleSignIN = async () => {
@@ -112,9 +120,12 @@ function Profile() {
    //console.log("resp from user DB in profile page : ", response);
    setTimeout(() => {
     setIsLoading(false);
-    router.replace("/");
+    console.log("route 2 : ", previousRoute);
+    previousRoute ? router.replace("/features/services") : router.replace("/");
    }, 2500);
-   toast.success("SignUp successful !");
+   toast.success("SignUp successful !", {
+    position: toast.POSITION.TOP_RIGHT,
+   });
   }
  };
 
@@ -194,7 +205,6 @@ function Profile() {
    <h3 onClick={delUsrAcc}>Cancel</h3>
    <ToastContainer
     autoClose={1500}
-    position="top-right"
     theme="colored"
     closeOnClick={true}
     pauseOnHover={true}
