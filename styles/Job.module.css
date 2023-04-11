@@ -1,129 +1,20 @@
-/* General styling for large screens */
-.header{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  min-height: 450px;
-  padding: 2rem;
-
-  background-image: url("../public/images/services.webp");
-  background-position-x: right;
-  background-repeat: no-repeat;
-  background-size: contain;
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* set the height of the container to the viewport height */
 }
 
-.headerText {
-  width: 40%;
-  float: left;
+.main h3{
+    display: block;
+    margin: 0 auto;
 }
 
-@media only screen and (min-width: 300px) and (max-width: 439px) {
-   .header{
-    min-width:100%;
-    min-height: 45vh;
-    background-position-x: center;
-  }
-  .headerText {
-    float: none;
-    position: absolute;
-    top: 45%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    max-width: none;
-    padding: 0 1em;
-  }
-}
-
-@media only screen and (min-width: 440px) and (max-width: 539px) {
-  .header{
-    min-width:100%;
-    min-height: 60vh;
-    background-position-x: center;
-  }
-   .headerText {
-    float: none;
-    position: absolute;
-    top: 55%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    max-width: none;
-    padding: 0 1em;
-  }
-}
-
-@media only screen and (min-width: 540px) and (max-width: 650px) {
-  .header{
-    min-width:100%;
-    min-height: 70vh;
-    background-position-x: center;
-  }
-  .headerText {
-    float: none;
-    position: absolute;
-    top: 55%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    max-width: none;
-    padding: 0 1em;
-  }
-}
-
-@media only screen and (min-width: 651px) and (max-width: 1000px) {
-  .header{
-    min-width:100%;
-    min-height: 45vh;
-    background-position-x: center;
-  }
-  .headerText {
-    float: none;
-    position: absolute;
-    top: 55%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    max-width: none;
-    padding: 0 1em;
-  }
-}
-
-@media only screen and (min-width: 1001px) and (max-width: 1300px) {
-  .header{
-    min-width:100%;
-    min-height: 400px;
-    background-position-x: right;
-  }
-  .headerText {
-    width: 30%;
-  }
-}
-
-/* Style the header text */
-.headerText h1 {
-  font-size: clamp(16px, 1.5vw, 20px);
-  margin-bottom: 1rem;
-}
-
-.headerText p {
-  font-size: clamp(16px, 1.5vw, 20px);
-  margin-bottom: 1.5rem;
-}
-
-/* Style the "Read More" button */
-.headerText button {
-  background-color: #0077cc;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 1rem 2rem;
-  font-size: clamp(16px, 1.5vw, 20px);
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.headerText button:hover {
-  background-color: #d3d61e;
+.btn{
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #0077cc;
+    color: white;
 }

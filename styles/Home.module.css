@@ -49,7 +49,7 @@
 }
 
 /* nav - Mobile*/
-@media only screen and (min-width: 330px) and (max-width: 650px){
+@media only screen and (min-width: 300px) and (max-width: 650px){
     .bar{
         display: block;
         width: 25px;
@@ -111,38 +111,45 @@
     }
 }
 
-/* Header */
-  .header{
-    background-image: url("../public/images/services.webp");/*use '../', for path*/
-    max-width:100%;
-    min-height: 600px;
-    background-position-x: right;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-  .headerText {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      max-width: 250px;
-      min-height: 500px;
-      position: relative;
-      top: 7vh;
-      left: 5vw;  
-  }
-  .headerText h1{
+/* Header - General Styles */
+.header{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 450px;
+  padding: 2rem;
+
+  background-image: url("../public/images/services.webp");
+  background-position-x: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.headerText {
+  width: 40%;
+  float: left;
+}
+
+/* header text  - general styles */
+ .headerText h1{
+    display: inline-block;
     background-color: rgb(137, 111, 111);
     color: azure;
     font-style: italic;
     font-weight: bolder;
+    font-size: clamp(16px, 1.5vw, 20px);
     margin-right: auto; /* 1 */
     padding: 4px;
   }
-  .headerText p{
-      font-size: clamp(1.2rem, 5vw + 1rem, 1.2rem); 
-  }
-  .button {
-      max-width: 10vw;
+
+.headerText p {
+  font-size: clamp(16px, 1.5vw, 20px);
+  margin-bottom: 1.5rem;
+}
+
+.button {
+      min-width: 10vw;
       border-radius: 15px;
       color: white;
       padding: 8px 16px;
@@ -165,154 +172,113 @@
     color: #FFFFFF;
   }
 
-/* Header - Mobile */
-@media only screen and (min-width: 330px) and (max-width: 504px) {
+@media only screen and (min-width: 300px) and (max-width: 439px) {
    .header{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    min-width:100%;
+    min-height: 65vh;
+    background-position-x: center;
   }
   .headerText {
-    display: flex;
-    flex-direction: column;
-    max-width: 90%;
-    min-height: 90%;
-    position: relative;
-    top: 8em;
-    left: 5vw;  
-    margin: 1em 2em;
+    float: none;
+    position: absolute;
+    top: 55%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    max-width: none;
+    padding: 0 1em;
   }
-  .headerText h1{
-    margin-right: auto;
-  }
-  .headerText p{
-      font-size: 2.8vw; 
-      font-weight: bold;
-  }
-   .button {
-    max-width: 30vw;
-    border-radius: 15px;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 4vw;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-   }
-   .button1 {
-    background-color: rgb(255, 214, 48);
-    color: black; 
-    border: 2px solid #4CAF50;
-    }
-}
-/* Header - Tablet View */
-@media only screen and (min-width: 505px) and (max-width: 650px){
-  .header{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .headerText {
-    display: flex;
-    flex-direction: column;
-    min-width: 90%;
-    min-height: 90%;
-    position: relative;
-    top: 20vh;
-    left: 5vw;  
-    margin: 1em 2em;
-  }
-  .headerText h1{
-    margin-right: auto;
-  }
-  .headerText p{
-      font-size: 2.8vw; 
-      font-weight: bold;
-  }
-   .button {
-    max-width: 30vw;
-    border-radius: 15px;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 4vw;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-   }
-   .button1 {
-    background-color: rgb(255, 214, 48);
-    color: black; 
-    border: 2px solid #4CAF50;
-    }
 }
 
-/* Header - Big Tablet View */
-@media only screen and (min-width: 651px) and (max-width: 900px){
+@media only screen and (min-width: 440px) and (max-width: 549px) {
   .header{
-    position: relative;
-    top: 20px;
-    bottom: 50px;
-    background-image: url("../public/images/services.webp");
-    max-width:100%;
-    min-height: 500px;
-    background-position-x: right;
-    background-repeat: no-repeat;
-    background-size: 70%;
+    min-width:100%;
+    min-height: 65vh;
+    background-position-x: center;
+  }
+   .headerText {
+    float: none;
+    position: absolute;
+    top: 58%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    max-width: none;
+    padding: 0 1em;
+  }
+}
+
+@media only screen and (min-width: 550px) and (max-width: 650px) {
+  .header{
+    min-width:100%;
+    min-height: 70vh;
+    background-position-x: center;
   }
   .headerText {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      max-width: 10em;
-      min-height: 400px;
-      position: relative;
-      top: 0.1vh;
-      left: 5vw;  
+    float: none;
+    position: absolute;
+    top: 65%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    max-width: none;
+    padding: 0 1em;
   }
-  .headerText h1{
-    background-color: rgb(137, 111, 111);
-    color: azure;
-    font-style: italic;
-    font-weight: bolder;
-    font-size: 1rem; 
-    margin-right: auto;
-    padding: 0.2em;
+}
+
+@media only screen and (min-width: 651px) and (max-width: 1000px) {
+  .header{
+    min-width:100%;
+    min-height: 70vh;
+    background-position-x: center;
   }
-  .headerText p{
-      font-size: 0.5rem; 
-      font-weight: bold;
+  .headerText {
+    float: none;
+    position: absolute;
+    top: 65%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    max-width: none;
+    padding: 0 1em;
   }
-  .button {
-      max-width: 15vw;
-      border-radius: 15px;
-      color: white;
-      padding: 8px 16px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 2vw;
-      margin: 4px 2px;
-      transition-duration: 0.4s;
-      cursor: pointer;
+}
+
+@media only screen and (min-width: 651px) and (max-width: 800px) {
+   .header{
+    min-height: 82vh;
   }
-  .button1 {
-      background-color: white; 
-      color: black; 
-      border: 2px solid #4CAF50;
+   .headerText {
+    top: 75%;
   }
-  .button1:hover {
-    background-color: rgb(255, 214, 48);
-    color: #FFFFFF;
+}
+
+@media only screen and (min-width: 801px) and (max-width: 999px) {
+   .header{
+    min-height: 90vh;
   }
-} 
+   .headerText {
+    top: 85%;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1300px) {
+  .header{
+    min-width:100%;
+    min-height: 400px;
+    background-position-x: right;
+  }
+  .headerText {
+    width: 30%;
+     margin-left: 2em;
+  }
+}
+
+@media only screen and (min-width: 1310px)  {
+   .headerText {
+    margin-left: 2em;
+  }
+}
 
 
 /* Features */
