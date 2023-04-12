@@ -131,7 +131,6 @@
   float: left;
 }
 
-/* header text  - general styles */
  .headerText h1{
     display: inline-block;
     background-color: rgb(137, 111, 111);
@@ -172,16 +171,16 @@
     color: #FFFFFF;
   }
 
-@media only screen and (min-width: 300px) and (max-width: 439px) {
+@media only screen and (min-width: 300px) and (max-width: 440px) and (500px <= height <= 930px){
    .header{
     min-width:100%;
-    min-height: 65vh;
+    min-height: 35em;
     background-position-x: center;
   }
   .headerText {
     float: none;
     position: absolute;
-    top: 55%;
+    top: 30em;
     left: 0;
     transform: translateY(-50%);
     width: 100%;
@@ -190,16 +189,16 @@
   }
 }
 
-@media only screen and (min-width: 440px) and (max-width: 549px) {
+@media only screen and (min-width: 440px) and (max-width: 549px) and (500px <= height <= 930px) {
   .header{
     min-width:100%;
-    min-height: 65vh;
+    min-height: 35em;
     background-position-x: center;
   }
    .headerText {
     float: none;
     position: absolute;
-    top: 58%;
+    top: 32em;
     left: 0;
     transform: translateY(-50%);
     width: 100%;
@@ -208,34 +207,16 @@
   }
 }
 
-@media only screen and (min-width: 550px) and (max-width: 650px) {
+@media only screen and (min-width: 550px) and (max-width: 650px) and (500px <= height <= 930px){
   .header{
     min-width:100%;
-    min-height: 70vh;
-    background-position-x: center;
-  }
-  .headerText {
-    float: none;
-    position: absolute;
-    top: 65%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    max-width: none;
-    padding: 0 1em;
-  }
-}
-
-@media only screen and (min-width: 651px) and (max-width: 1000px) {
-  .header{
-    min-width:100%;
-    min-height: 70vh;
+    min-height: 36em;
     background-position-x: center;
   }
   .headerText {
     float: none;
     position: absolute;
-    top: 65%;
+    top: 33em;
     left: 0;
     transform: translateY(-50%);
     width: 100%;
@@ -244,21 +225,39 @@
   }
 }
 
-@media only screen and (min-width: 651px) and (max-width: 800px) {
-   .header{
-    min-height: 82vh;
+@media only screen and (min-width: 651px) and (max-width: 1000px) and (500px <= height <= 930px){
+  .header{
+    min-width:100%;
+    min-height: 39em;
+    background-position-x: center;
   }
-   .headerText {
-    top: 75%;
+  .headerText {
+    float: none;
+    position: absolute;
+    top: 36em;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    max-width: none;
+    padding: 0 1em;
   }
 }
 
-@media only screen and (min-width: 801px) and (max-width: 999px) {
+@media only screen and (min-width: 651px) and (max-width: 800px) and (500px <= height <= 930px) {
    .header{
-    min-height: 90vh;
+    min-height: 40em;
   }
    .headerText {
-    top: 85%;
+    top: 38em;
+  }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 999px) and (500px <= height <= 930px) {
+   .header{
+    min-height: 45em;
+  }
+   .headerText {
+    top: 43em;
   }
 }
 
