@@ -21,14 +21,9 @@ function Service(props) {
 
  console.log("Props in services : ", props);
 
- useEffect(() => {
-  console.log("service 0 : ", router.asPath);
-  !user &&
-   router.push({
-    pathname: "/profile",
-    query: router.asPath,
-   });
- }, []);
+  useEffect(() => {
+   !user && router.replace("/profile");
+  }, []);
 
  const handleSubmit = async (e) => {
   e.preventDefault();
