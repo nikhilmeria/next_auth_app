@@ -23,6 +23,34 @@ function Service(props) {
 
   useEffect(() => {
    !user && router.replace("/profile");
+
+    function preventPullToRefresh() {
+     var lastTouchY = 0;
+     document.addEventListener(
+      "touchstart",
+      function (e) {
+       if (e.touches.length !== 1) return;
+       lastTouchY = e.touches[0].clientY;
+      },
+      {passive: false}
+     );
+
+     document.addEventListener(
+      "touchmove",
+      function (e) {
+       var touchY = e.touches[0].clientY;
+       var touchYDelta = touchY - lastTouchY;
+       lastTouchY = touchY;
+       if (touchYDelta > 0) {
+        e.preventDefault();
+        return;
+       }
+      },
+      {passive: false}
+     );
+    }
+
+    preventPullToRefresh();
   }, []);
 
  const handleSubmit = async (e) => {
