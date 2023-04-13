@@ -71,11 +71,19 @@ export default function Home() {
         About
        </Link>
       </li>
-      <li>
-       <Link href="/feedback" className={styles.navLink}>
-        Feedback
-       </Link>
-      </li>
+      {user && user.email === "klokroom@gmail.com" ? (
+       <li>
+        <Link href="/admin" className={styles.navLink}>
+         Admin
+        </Link>
+       </li>
+      ) : (
+       <li>
+        <Link href="/feedback" className={styles.navLink}>
+         Feedback
+        </Link>
+       </li>
+      )}
       <li>
        <Link href="#contact" className={styles.navLink}>
         Contact
