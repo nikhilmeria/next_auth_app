@@ -5,6 +5,7 @@ import {useRouter} from "next/router";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import admin from "firebase-admin";
+import Modal from "react-modal";
 
 import serviceStyles from "../../styles/Services.module.css";
 import {useAuthContext} from "../../context/authContext";
@@ -20,38 +21,39 @@ function Service(props) {
  const [isLoading, setIsLoading] = useState(false);
 
  console.log("Props in services : ", props);
+ console.log("user in services : ", user);
 
-  useEffect(() => {
-   !user && router.replace("/profile");
+ useEffect(() => {
+  // !user && router.replace("/profile");
 
-    function preventPullToRefresh() {
-     var lastTouchY = 0;
-     document.addEventListener(
-      "touchstart",
-      function (e) {
-       if (e.touches.length !== 1) return;
-       lastTouchY = e.touches[0].clientY;
-      },
-      {passive: false}
-     );
+  function preventPullToRefresh() {
+   var lastTouchY = 0;
+   document.addEventListener(
+    "touchstart",
+    function (e) {
+     if (e.touches.length !== 1) return;
+     lastTouchY = e.touches[0].clientY;
+    },
+    {passive: false}
+   );
 
-     document.addEventListener(
-      "touchmove",
-      function (e) {
-       var touchY = e.touches[0].clientY;
-       var touchYDelta = touchY - lastTouchY;
-       lastTouchY = touchY;
-       if (touchYDelta > 0) {
-        e.preventDefault();
-        return;
-       }
-      },
-      {passive: false}
-     );
-    }
+   document.addEventListener(
+    "touchmove",
+    function (e) {
+     var touchY = e.touches[0].clientY;
+     var touchYDelta = touchY - lastTouchY;
+     lastTouchY = touchY;
+     if (touchYDelta > 0) {
+      e.preventDefault();
+      return;
+     }
+    },
+    {passive: false}
+   );
+  }
 
-    preventPullToRefresh();
-  }, []);
+  preventPullToRefresh();
+ }, []);
 
  const handleSubmit = async (e) => {
   e.preventDefault();
@@ -214,6 +216,37 @@ function Service(props) {
     </>
    )}
    {isLoading && <Loading />}
+   <Modal
+    isOpen={!user}
+    shouldCloseOnEsc={false}
+    shouldCloseOnOverlayClick={false}
+    style={{
+     overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+     },
+     content: {
+      backgroundColor: "white",
+      borderRadius: "10px",
+      padding: "50px",
+      maxWidth: "60vw",
+      minHeight: "35vh",
+      margin: "30vh auto",
+     },
+    }}
+   >
+    <h2>you need to Login first</h2>
+    <div>
+     <button
+      type="submit"
+      onClick={() => {
+       console.log("user in Modal : ", user);
+       router.replace("/profile");
+      }}
+     >
+      Login
+     </button>
+    </div>
+   </Modal>
   </>
  );
 }

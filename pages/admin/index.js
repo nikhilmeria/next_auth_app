@@ -17,7 +17,7 @@ export default function Admin() {
     </p>
 
     <div className={adminStyles.grid}>
-     <Link href="" className={adminStyles.card}>
+     <Link href="/admin/services" className={adminStyles.card}>
       <h2>Services &rarr;</h2>
       <p>
        Manage different aspects of the service section on various parameters.
