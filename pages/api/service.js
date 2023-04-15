@@ -13,7 +13,7 @@ if (!admin.apps.length) {
 }
 
 export default async function serviceHandler(req, res) {
- const timestamp = admin.firestore.Timestamp.now();
+ const timestamp = admin.firestore.FieldValue.serverTimestamp(); 
 
  const name = req.body.nm;
  const no = req.body.ph;
