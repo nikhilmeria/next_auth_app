@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import Link from "next/link";
 import adminServStyles from "../../styles/Adm_serv.module.css";
 
 import firebase_app from "../../firebase_config";
@@ -60,6 +61,9 @@ function Services() {
     onChange={(e) => setEndDate(e.target.value)}
    />
    <button onClick={queryServices}>Search</button>
+   <button onClick={queryServices}>
+    <Link href="/admin">Cancel</Link>
+   </button>
    <div className={adminServStyles.result}>
     {data.length === 0 ? (
      <h4>No Data Found</h4>
@@ -67,8 +71,17 @@ function Services() {
      <>
       {data.map((ei) => (
        <div key={ei.date}>
-        <h2>{ei.name}</h2>
+        <h3>{ei.name}</h3>
+        <h3>{ei.phone_no}</h3>
         <p>{ei.address}</p>
+        <h4>{ei.service_req}</h4>
+        <p>
+         {new Date(ei.date.seconds * 1000).toLocaleDateString("en-IN", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+         })}
+        </p>
        </div>
       ))}
      </>
