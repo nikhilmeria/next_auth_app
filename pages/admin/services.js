@@ -61,8 +61,8 @@ function Services() {
     onChange={(e) => setEndDate(e.target.value)}
    />
    <button onClick={queryServices}>Search</button>
-   <button onClick={queryServices}>
-    <Link href="/admin">Cancel</Link>
+   <button>
+    <Link href="/admin">Back</Link>
    </button>
    <div className={adminServStyles.result}>
     {data.length === 0 ? (

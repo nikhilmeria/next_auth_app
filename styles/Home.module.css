@@ -431,7 +431,7 @@
   }
 
 /* Footer - Mobile */
-@media only screen and (min-width: 330px) and (max-width: 650px) {
+@media only screen and (min-width: 300px) and (max-width: 650px) {
     .foot{
         display: flex;
         flex-direction: column;

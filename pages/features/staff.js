@@ -6,8 +6,10 @@ const Staff = () => {
   <div className={staffStyles.main}>
    <h3>Coming Soon</h3>
    <br />
-   <Link href="/" className={staffStyles.btn}>
-    <button>Home</button>
+   <Link href="/">
+    <button style={{cursor: "pointer"}} className={staffStyles.btn}>
+     Home
+    </button>
    </Link>
   </div>
  );

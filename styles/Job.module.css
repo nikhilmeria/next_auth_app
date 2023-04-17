@@ -12,9 +12,10 @@
 }
 
 .btn{
-    padding: 1rem;
-    border-radius: 5px;
-    border: none;
-    background-color: #0077cc;
-    color: white;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #75aeea;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
 }
